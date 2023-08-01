@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    height: 100%;
+    /* grid-template-areas: "one, one"; */
+}
+
+.left {
+    grid: one;
+    background-color: rgba(88, 53, 146, 0.87);
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 35%;
+}
+
+.right {
+    grid: two;
+}
+
+form {
+    margin-top: 20vh;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 3vh;
+}
+
+.name, .email, .phoneNumber, .password, .confirmPassword {
+    position: relative;
+    display: inline-block;
+}
+
+.name input {
+    height: 5vh;
+    width: 35vh;
+    border-radius: 1vh;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    background-image: url('./Images/icons8-person-30.png');
+    background-size: 2vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 3vh center;
+    padding-left: 6vh;
+    outline: none;
+}
+.email input {
+    height: 5vh;
+    width: 35vh;
+    border-radius: 1vh;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    background-image: url('./Images/icons8-email-30.png');
+    background-size: 2vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 3vh center;
+    padding-left: 6vh;
+    outline: none;
+}
+.phoneNumber input {
+    height: 5vh;
+    width: 35vh;
+    border-radius: 1vh;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    background-image: url('./Images/icons8-phone-30.png');
+    background-size: 2vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 3vh center;
+    padding-left: 6vh;
+    outline: none;
+}
+.password input {
+    height: 5vh;
+    width: 35vh;
+    border-radius: 1vh;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    background-image: url('./Images/icons8-password-30.png');
+    background-size: 2vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 3vh center;
+    padding-left: 6vh;
+    outline: none;
+}
+.confirmPassword input {
+    height: 5vh;
+    width: 35vh;
+    border-radius: 1vh;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    background-image: url('./Images/icons8-password-30.png');
+    background-size: 2vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 3vh center;
+    padding-left: 6vh;
+    outline: none;
+}
+
+form>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button{
+    height: 5vh;
+    width: 41vh;
+    border-radius: 1vh;
+    background-color: rgba(88, 53, 146, 0.87);
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    cursor: pointer;
+}
+.logIn{
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 800px ), (max-width: 500px){
+    *{
+        overflow: hidden;
+    }
+    body{
+        margin: 0;
+    }
+    .main{
+        display: block;
+        height: 100%;
+    }
+    .left{
+        height: 30%;
+    }
+    .right{
+        height: 70%;
+    }
+    form{
+        margin-top: 5vh;
+        display: flex;
+        justify-content: center;
+    }
+    .heading{
+        margin-top: 10vh;
+    }
+    
+}
