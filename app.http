@@ -1,0 +1,12 @@
+POST http://localhost:5000/project
+Content-Type: application/json
+
+
+{
+    "projectName": "eat food",
+    "projectDescription": "east to capacity",
+    "endDate": "2027/04/04"
+}
+
+###DELETE PROJECT
+DELETE http://localhost:5000/project/834642a8-d998-4c28-9468-b02ba1a8c62b
