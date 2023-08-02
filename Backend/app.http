@@ -9,4 +9,16 @@ Content-Type: application/json
 }
 
 ###DELETE PROJECT
-DELETE http://localhost:5000/project/834642a8-d998-4c28-9468-b02ba1a8c62b
+DELETE http://localhost:5000/project/834642a8-d998-4c28-9468-b02ba1a8c62b 
+
+
+###REGISTER USER
+POST http://localhost:5000/user 
+Content-Type: application/json 
+
+{
+    "userName":"David Munyiri",
+    "userEmail":"davidmunyiri2019@outlook.com",
+    "userPhone":"0741712131",
+    "userPassword":"12345678"
+}
