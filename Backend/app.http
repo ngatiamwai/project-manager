@@ -12,10 +12,10 @@ Content-Type: application/json
 GET http://localhost:5000/project
 
 ###GET ONE PROJECT
-GET http://localhost:5000/project/3b9413b5-8b4e-4369-be0b-5b3dcc605077
+GET http://localhost:5000/project/4d8e70db-fd58-46a6-afb2-bd285f0fefc2
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/3b9413b5-8b4e-4369-be0b-5b3dcc605077
+PUT  http://localhost:5000/project/4d8e70db-fd58-46a6-afb2-bd285f0fefc2
 Content-Type: application/json
 
 {
@@ -26,7 +26,7 @@ Content-Type: application/json
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/3b9413b5-8b4e-4369-be0b-5b3dcc605077
+DELETE http://localhost:5000/project/4d8e70db-fd58-46a6-afb2-bd285f0fefc2
 
 
 

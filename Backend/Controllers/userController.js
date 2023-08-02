@@ -3,7 +3,7 @@ const mssql=require('mssql')
 const bcrypt=require('bcrypt')
 
 const { sqlConfig } = require('../Config/config')
-const { createTableUser } = require('../Database/Tables/createUserTable')
+const { createTableUser } = require('../Database/Tables/createTables')
 
 const registerUser=async(req,res)=>{
     try {
