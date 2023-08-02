@@ -1,7 +1,8 @@
 const {v4} = require('uuid')
 const mssql = require('mssql')
-const { createProjectsTable } = require('../Database/createTables')
+
 const { sqlConfig } = require('../Config/config')
+const { createProjectsTable } = require('../Database/Tables/createTables')
 
 const createProject = async(req,res)=>{
 try {
