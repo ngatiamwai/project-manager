@@ -3,3 +3,5 @@ AS
 BEGIN
     INSERT INTO projectTable(projectId, projectName, projectDescription, endDate) VALUES(@projectId, @projectName, @projectDescription, @endDate)
 END
+
+SELECT *FROM projectTable
