@@ -25,4 +25,18 @@ Content-Type: application/json
     "endDate": "2027/04/04"
 } 
 ###DELETE PROJECT
+
 DELETE http://localhost:5000/project/de2bcac5-6f13-428e-bee1-32d9a3f1eff1
+
+
+
+###REGISTER USER
+POST http://localhost:5000/user 
+Content-Type: application/json 
+
+{
+    "userName":"David Munyiri",
+    "userEmail":"davidmunyiri2019@outlook.com",
+    "userPhone":"0741712131",
+    "userPassword":"12345678"
+}
