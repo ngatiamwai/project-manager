@@ -1,7 +1,7 @@
 ###PROJECT MANAGEMENT
 POST http://localhost:5000/project
 Content-Type: application/json
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0Zjk4MTk3Ny01NDRkLTQ2MjItYjY4MC1kYTAwNzZkZjY3MDEiLCJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bnlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiMDc0MTcxMjEzMSIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MDk3ODA3OCwiZXhwIjoxNjkxMzM4MDc4fQ.6QYgXo5-reYcjOZNF1BoVz73IubnOffJR75AyO1LExU
+# token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0Zjk4MTk3Ny01NDRkLTQ2MjItYjY4MC1kYTAwNzZkZjY3MDEiLCJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bnlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiMDc0MTcxMjEzMSIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MDk3ODA3OCwiZXhwIjoxNjkxMzM4MDc4fQ.6QYgXo5-reYcjOZNF1BoVz73IubnOffJR75AyO1LExU
 
 
 {
@@ -36,8 +36,8 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-    "userName":"David Munyiri",
-    "userEmail":"davidmunyiri2019@outlook.com",
+    "userName":"Ngatia Mwai",
+    "userEmail":"ngatia.mwai@thejitu.com",
     "userPhone":"0741712131",
     "userPassword":"12345678"
 }
@@ -48,7 +48,7 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"David Munyiri",
+    "userName":"Ngatia Mwai",
     "userPassword":"12345678"
 }
 
