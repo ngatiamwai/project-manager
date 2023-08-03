@@ -38,6 +38,7 @@ body {
 form {
     margin-top: 20vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     align-content: center;
     gap: 3vh;
@@ -129,6 +130,177 @@ button{
 a{
     text-decoration: none;
     cursor: pointer;
+}
+.master{
+    margin: 0 10vh 5vh 10vh;
+    
+}
+.nav{
+    position: sticky;
+    top: 2vh;
+    background: white;
+}
+.username{
+    display: flex;
+    justify-content: space-between;
+}
+hr{
+    color: rgba(88, 53, 146, 0.87);
+}
+.content{
+    display: flex;
+    margin-top: 3vh;
+}
+.sect{
+    position: fixed;
+    height: 90%;
+    width: 20%;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    border-radius: 1vh;
+}
+.userFeatures{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.userFeatures p{
+    margin-top: 10vh;
+}
+.content2, .assignedProjects, .unassignedProjects, .completedProjects{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 35vh;
+    margin-right: 10vh;
+}
+.actualContent{
+    margin-top: 2vh;
+    background-color: rgba(217, 217, 217, 0.3);
+    border-bottom: 2px solid rgba(88, 53, 146, 0.87);
+}
+.actualContentBody{
+    margin: 1vh;
+    display: flex;
+    flex-direction: row;
+}
+.actualContentBody1{
+    margin-top: 1vh;
+    width: 15%;
+}
+.actualContentBody2{
+    margin-top: 1vh;
+    width: 70%;
+}
+.actualContentBody3{
+    margin-top: 1vh;
+    /* width: 15%; */
+    margin-left: 2vh;
+}
+.complete{
+    height: 5vh;
+    width: 8vw;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(101, 182, 52, 1);  
+    border-radius: 1vh;
+    color: rgba(101, 182, 52, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2vh;
+}
+
+.projectTitle, .projectDescription, .dueDate {
+    display: block;
+    /* flex-direction: row;
+    gap: 3vh; */
+}
+.projectTitle textarea{
+    border-radius: 1vh;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    outline: none;
+}
+.projectDescription textarea{
+    border-radius: 1vh;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    outline: none;
+}
+.dueDate input{
+    border-radius: 1vh;
+    border: 2px solid rgba(88, 53, 146, 0.87);
+    outline: none;
+}
+.update{
+    height: 5vh;
+    width: 8vw;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(88, 53, 146, 1);
+    border-radius: 1vh;
+    color: rgba(88, 53, 146, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./Images/icons8-pencil-30.png');
+    background-size: 2vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 3vh center;
+    padding-left: 2vh;
+}
+.delete{
+    height: 5vh;
+    width: 8vw;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(245, 11, 11, 1);
+    border-radius: 1vh;
+    color: rgba(245, 11, 11, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./Images/icons8-delete-30.png');
+    background-size: 2vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 3vh center;
+    padding-left: 2vh;
+}
+.assign{
+    height: 5vh;
+    width: 9vw;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(14, 90, 238, 1);
+    border-radius: 1vh;
+    color: rgba(14, 90, 238, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 2vh 2vh;
+    background-repeat: no-repeat;
+    background-position: 3vh center;
+    padding-left: 2vh;
+}
+.users{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 5vw; */
+
+}
+.users2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 10vw;
+    border-bottom: 2px solid rgba(88, 53, 146, 0.87);
+    width: 85%;
+    /* margin-left: 25vh; */
+}
+.image{
+    border-radius: 50%;
+    height: 10vh;
 }
 
 
