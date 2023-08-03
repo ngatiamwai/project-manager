@@ -3,4 +3,5 @@ AS
 BEGIN 
 SELECT * FROM userTable
 WHERE userName=@userName
-END;
+END; 
+SELECT * FROM userTable
