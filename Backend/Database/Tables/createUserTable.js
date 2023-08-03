@@ -4,7 +4,23 @@ const {sqlConfig}=require('../../Config/config')
 const createTableUser=async(req,res)=>{
     try {
         const table=`
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE3MjJjNzdhLWU4MmEtNDI3Zi1iZmE4LWY5NDZhMjlmNTM3NCIsInVzZXJuYW1lIjoiTXVueWlyaSBNIiwiZW1haWwiOiJtdW55aXJpLm13YW5naS5jb20iLCJyb2xlIjoidXNlciIsImlzc2VudCI6ZmFsc2UsImlhdCI6MTY5MDk2NjI1NywiZXhwIjoxNjkxMDAyMjU3fQ.h3C14_v5qiReKT2sNqjKRxqt9WAg7ZK-yC-aV_HxITg
+        BEGIN 
+        TRY 
+        CREATE TABLE userTable(
+            userId VARCHAR(100) PRIMARY KEY,
+            userName VARCHAR(100) UNIQUE NOT NULL,
+            userEmail VARCHAR(100) UNIQUE NOT NULL,
+            userPhone VARCHAR (15) UNIQUE NOT NULL,
+            userPassword VARCHAR(MAX) NOT NULL,
+            profilePic VARCHAR (MAX),
+            role VARCHAR (20) 
+        )
+        END TRY
+        BEGIN 
+        CATCH 
+        THROW 50001,'Table has already been created',1
+        END 
+        CATCH 
         `
         const pool=await mssql.connect(sqlConfig)
 await pool.query(table,(err)=>{

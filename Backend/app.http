@@ -1,8 +1,6 @@
 ###PROJECT MANAGEMENT
 POST http://localhost:5000/project
 Content-Type: application/json
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0Zjk4MTk3Ny01NDRkLTQ2MjItYjY4MC1kYTAwNzZkZjY3MDEiLCJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bnlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiMDc0MTcxMjEzMSIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MDk3ODA3OCwiZXhwIjoxNjkxMzM4MDc4fQ.6QYgXo5-reYcjOZNF1BoVz73IubnOffJR75AyO1LExU
-
 
 {
     "projectName": "House Construction",
@@ -13,10 +11,10 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0Zjk4MTk3Ny01NDRkLTQ2M
 GET http://localhost:5000/project
 
 ###GET ONE PROJECT
-GET http://localhost:5000/project/4d8e70db-fd58-46a6-afb2-bd285f0fefc2
+GET http://localhost:5000/project/
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/4d8e70db-fd58-46a6-afb2-bd285f0fefc2
+PUT  http://localhost:5000/project/
 Content-Type: application/json
 
 {
@@ -27,7 +25,7 @@ Content-Type: application/json
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/4d8e70db-fd58-46a6-afb2-bd285f0fefc2
+DELETE http://localhost:5000/project/
 
 
 
@@ -36,10 +34,11 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-    "userName":"David Munyiri",
-    "userEmail":"davidmunyiri2019@outlook.com",
-    "userPhone":"0741712131",
-    "userPassword":"12345678"
+    "userName":"Calvince Chacha",
+    "userEmail":"chacha@outlook.com",
+    "userPhone":"0741713056",
+    "userPassword":"12345678",
+    "role":"normalUser"
 }
 
 
@@ -53,7 +52,7 @@ Content-Type: application/json
 }
 
 ###USER DETAIL UPDATE
-PUT http://localhost:5000/user/4f981977-544d-4622-b680-da0076df6701
+PUT http://localhost:5000/user/60b9a07d-0130-48db-bb88-0efc42933709
 Content-Type: application/json 
 
 {
@@ -61,4 +60,13 @@ Content-Type: application/json
     "userEmail":"davidmumyiri2019@gmail.com",
     "userPhone":"0741712140",
     "userPassword":"12345655"
+} 
+
+###ASSIGN PROJECT
+PUT http://localhost:5000/user/assign/
+Content-Type: application/json 
+
+{
+    "userName":"Calvince Chacha",
+    "projectId":"aae416c9-e01b-4aa3-b4b1-c5308584f6e9"
 }
