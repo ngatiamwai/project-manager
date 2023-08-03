@@ -1,4 +1,4 @@
 CREATE OR ALTER PROCEDURE getAllProjects
 AS
 BEGIN SELECT * FROM projectTable
-END
+END;

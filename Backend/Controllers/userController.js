@@ -6,7 +6,7 @@ const jwt=require('jsonwebtoken')
 const { sqlConfig } = require('../Config/config')
 const { createTableUser } = require('../Database/Tables/createTables')
 
-//ENDPOINT FOR USER REGISTRATION
+// USER REGISTRATION Controller
 const registerUser=async(req,res)=>{
     try {
         const userId=v4()
@@ -23,23 +23,19 @@ const hashedPassword=await bcrypt.hash(userPassword, salt)
             .input('userPhone',userPhone)
             .input('userPassword',hashedPassword)
             .execute('registerUserProc')
-        })
-        .then((result)=>{
-            
-            res.json({
-                message:'User Registered succesfully',
-                result
-            })
+           
+        }).then((result)=>{
+            res.json({message:'User Registered succesful',result})
         }).catch((err)=>{
-            console.log('Error') 
+            console.log('Error')
         })
     } catch (error) {
-       // createTableUser()
+       
         res.json({Error:error.message})
     }
 }
 
-//An Endpoint for UserLogin
+//USER LOGIN Controller
 const loginUser=async(req,res)=>{
     try {
         const {userName,userPassword}=req.body 
@@ -76,7 +72,7 @@ const updateUser=async(req,res)=>{
 
         const salt = await bcrypt.genSalt(10)
         const hashedPassword=await bcrypt.hash(userPassword, salt)
-console.log('alresdy here')
+//console.log('already here')
         mssql.connect(sqlConfig)
         .then((pool)=>{
             pool.request()
@@ -87,20 +83,43 @@ console.log('alresdy here')
             .input('userPassword',hashedPassword)
             .input('profilePic',profilePic)
            .execute('userUpdateProc')
-           .then((result)=>{
-            return res.json({
-                message:'User details Updated Successfully' })
-             })
+           
             
-        }).catch((error)=>{
-            res.json({Error:`You have an error ${error}`})
-        })
+    })
     } catch (error) {
         return res.json({Error:error})
+    }
+}
+
+//ASSIGN a project 
+const assignProject=async(req,res)=>{
+    try {
+        const {userName}=req.params 
+        const {projectId}=req.body 
+        if (req.user.role !== 'admin') {
+              return res.status(403).json({ error: 'You do not have permission to assign projects' });
+             }
+          
+        mssql.connect(sqlConfig)
+.then((pool)=>{
+    pool.request()
+    mssql.query('UPDATE projectTable SET assignedTo = @userName WHERE projectId = @projectId', { userId, projectId }, (err) => {
+          if (err) {
+            return res.status(500).json({ error: 'Error assigning project' });
+          }
+          return res.status(200).json({ message: 'Project assigned successfully' });
+        });
+})
+ 
+
+    } catch (error) {
+       
+
     }
 }
 module.exports={
     registerUser,
     loginUser,
-    updateUser
+    updateUser,
+    assignProject
 }

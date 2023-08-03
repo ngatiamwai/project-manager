@@ -1,19 +1,27 @@
 {
   "name": "project-manager",
   "version": "1.0.0",
-  "description": "",
+  "description": "A contribution to the group project for a project management project\r This project is being carried out by David Munyiri, Calvince chacha and Ngatia Mwai",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngatiamwai/project-manager.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngatiamwai/project-manager/issues"
+  },
+  "homepage": "https://github.com/ngatiamwai/project-manager#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mssql": "^9.1.1",
+    "mssql": "^9.1.2",
     "nodemon": "^3.0.1",
     "uuid": "^9.0.0"
   }
