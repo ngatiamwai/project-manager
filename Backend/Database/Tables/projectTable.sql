@@ -9,6 +9,8 @@ BEGIN
             status BIT DEFAULT 0,
             assignedTo VARCHAR(100),
             FOREIGN KEY (assignedTo) REFERENCES userTable (userName)
+            ON DELETE SET NULL
+            ON UPDATE CASCADE
         )
 
     END TRY
