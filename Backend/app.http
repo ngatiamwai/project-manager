@@ -50,7 +50,7 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"Ngatia Mwai",
+    "userName":"Calvince Chacha",
     "userPassword":"12345678"
 }
 
