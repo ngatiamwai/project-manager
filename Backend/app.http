@@ -1,12 +1,12 @@
 ###PROJECT MANAGEMENT
 POST http://localhost:5000/project
 Content-Type: application/json
-# token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0Zjk4MTk3Ny01NDRkLTQ2MjItYjY4MC1kYTAwNzZkZjY3MDEiLCJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bnlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiMDc0MTcxMjEzMSIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MDk3ODA3OCwiZXhwIjoxNjkxMzM4MDc4fQ.6QYgXo5-reYcjOZNF1BoVz73IubnOffJR75AyO1LExU
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0Zjk4MTk3Ny01NDRkLTQ2MjItYjY4MC1kYTAwNzZkZjY3MDEiLCJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bnlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiMDc0MTcxMjEzMSIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MDk3ODA3OCwiZXhwIjoxNjkxMzM4MDc4fQ.6QYgXo5-reYcjOZNF1BoVz73IubnOffJR75AyO1LExU
 
 
 {
-    "projectName": "House Construction",
-    "projectDescription": "Build a mansion",
+    "projectName": "Express Way Building",
+    "projectDescription": "Construct expressway",
     "endDate": "2027/04/04"
 }
 ###GET ALL PROJECTS
@@ -37,11 +37,11 @@ Content-Type: application/json
 
 {
 
-    "userName":"Calvince Chacha",
-    "userEmail":"chacha@outlook.com",
-    "userPhone":"0741713056",
+    "userName":"David Munyiri",
+    "userEmail":"davidmunyiri@gmail.com",
+    "userPhone":"0741712131",
     "userPassword":"12345678",
-    "role":"normalUser"
+    "role":"admin"
 }
 
 
@@ -55,7 +55,7 @@ Content-Type: application/json
 }
 
 ###USER DETAIL UPDATE
-PUT http://localhost:5000/user/60b9a07d-0130-48db-bb88-0efc42933709
+PUT http://localhost:5000/user/
 Content-Type: application/json 
 
 {
@@ -66,10 +66,30 @@ Content-Type: application/json
 } 
 
 ###ASSIGN PROJECT
-PUT http://localhost:5000/user/assign/
+PUT http://localhost:5000/user/assign/5c114f46-431e-4ac2-a002-d4873ffb2b03
 Content-Type: application/json 
 
 {
-    "userName":"Calvince Chacha",
-    "projectId":"aae416c9-e01b-4aa3-b4b1-c5308584f6e9"
+    "projectId":"a3162460-b519-40c9-9fa1-6fc1cfec63d4",
+    "assigned":1
+} 
+
+###VIEW ASSIGNED PROJECT 
+GET http://localhost:5000/user/5c114f46-431e-4ac2-a002-d4873ffb2b03 
+
+###ADMIN VIEW ALL PROJECTS HE HAS ASSIGNED 
+POST http://localhost:5000/user
+Content-Type: application/json 
+
+{
+    "assigned":1
+} 
+
+
+###Unassigned projects
+POST http://localhost:5000/user 
+Content-Type: application/json 
+
+{
+    "assigned":0
 }

@@ -4,13 +4,14 @@ const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
 
 const { sqlConfig } = require('../Config/config')
-const { createTableUser } = require('../Database/Tables/createTables')
+const { createProjectsTable } = require('../Database/Tables/createTables')
+//const { createTableUser } = require('../Database/Tables/createTables')
 
 // USER REGISTRATION Controller
 const registerUser=async(req,res)=>{
     try {
         const userId=v4()
-        const {userName,userPhone,userEmail,userPassword}=req.body
+        const {userName,userPhone,userEmail,userPassword,role}=req.body
         const salt = await bcrypt.genSalt(10)
 const hashedPassword=await bcrypt.hash(userPassword, salt)
 
@@ -22,10 +23,11 @@ const hashedPassword=await bcrypt.hash(userPassword, salt)
             .input('userEmail',userEmail)
             .input('userPhone',userPhone)
             .input('userPassword',hashedPassword)
+            .input('role',role)
             .execute('registerUserProc')
            
         }).then((result)=>{
-            res.json({message:'User Registered succesful',result})
+            res.json({message:'User Registered succesfully',result})
         }).catch((err)=>{
             console.log('Error')
         })
@@ -83,8 +85,7 @@ const updateUser=async(req,res)=>{
             .input('userPassword',hashedPassword)
             .input('profilePic',profilePic)
            .execute('userUpdateProc')
-           
-            
+                
     })
     } catch (error) {
         return res.json({Error:error})
@@ -94,32 +95,65 @@ const updateUser=async(req,res)=>{
 //ASSIGN a project 
 const assignProject=async(req,res)=>{
     try {
-        const {userName}=req.params 
-        const {projectId}=req.body 
-        if (req.user.role !== 'admin') {
-              return res.status(403).json({ error: 'You do not have permission to assign projects' });
-             }
-          
+        
+        const {userId}=req.params 
+
+        const {projectId,assigned}=req.body 
+        
         mssql.connect(sqlConfig)
-.then((pool)=>{
-    pool.request()
-    mssql.query('UPDATE projectTable SET assignedTo = @userName WHERE projectId = @projectId', { userId, projectId }, (err) => {
-          if (err) {
-            return res.status(500).json({ error: 'Error assigning project' });
-          }
-          return res.status(200).json({ message: 'Project assigned successfully' });
-        });
-})
- 
+        .then((pool)=>{
+            pool.request()
+            .input('projectId',projectId)
+            .input('userId',userId)
+            .input('assigned',assigned)
+            .execute('assignProjectProc')
+            .then((result)=>{
+                res.status(200).json({message:'Project assigned success'})
+            })
+        }).catch((err)=>{
+            console.log('Error assigning project')
+            createProjectsTable()
+        })
+    } catch (error) {    
+return res.json({Error:error})
+    }
+}
 
-    } catch (error) {
+//VIEW ASSIGNED PROJECT
+const viewAssignedProject=async(req,res)=>{
+    try {
+        const {userId}=req.params 
+     const pool=await mssql.connect(sqlConfig)
+        const result=(await pool.request().input('userId',userId).execute('viewAssignedProjectProc')).recordset[0] 
+        if(result){
+return res.status(200).json({message:'Here is your project',result})
+        }
+        else{
+           return res.status(400).json({message:'Project not found'})
+        }
        
+    } catch (error) {
+        return res.json({Error:error})
+    }
+}
 
+//ADMIN VIEW ALL ASSIGNED PROJECTS 
+const viewAllAssignedProjects=async(req,res)=>{
+    try {
+        const {assigned}=req.body
+        const pool=await (mssql.connect(sqlConfig))
+        
+        const projectsAssigned=(await pool.request().input('assigned',assigned).execute('viewAllAssignedProjectsProc')).recordset[0]
+        res.json({message:'Here are All Projects You have assigned to users',projectsAssigned})
+    } catch (error) {
+        return res.json({Error:error})
     }
 }
 module.exports={
     registerUser,
     loginUser,
     updateUser,
-    assignProject
+    assignProject,
+    viewAssignedProject,
+    viewAllAssignedProjects
 }

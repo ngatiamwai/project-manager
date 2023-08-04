@@ -4,7 +4,7 @@ const { tokenVerfying } = require('../MiddleWare/verifyToken');
 
 const projectRouter = Router();
 
-projectRouter.post('/', createProject);
+projectRouter.post('/',tokenVerfying, createProject);
 projectRouter.delete('/:projectId',deleteProject)
 projectRouter.get('/', viewallprojects)
 projectRouter.get('/:projectId', getOneProject)
