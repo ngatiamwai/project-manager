@@ -160,11 +160,42 @@ const viewAllAssignedProjects=async(req,res)=>{
         return res.json({Error:error})
     }
 }
+
+//user complete a project
+const userCompleteProject = async(req,res)=>{
+    try {
+        const userId = req.params.userId
+        const {projectId} = req.body
+
+
+
+        const pool=await (mssql.connect(sqlConfig))
+        const result = await pool.request()
+        .input('userId', mssql.VarChar, userId)
+        .input('projectId', mssql.VarChar, projectId)
+        .execute('completeProject')
+        
+        if(result.rowsAffected==1){  
+            return res.json({
+                message: "Project marked as completed",
+            })}
+        else{
+                return res.json({message: "Update failed, kindly ensure you have input the correct credentials"})
+            }
+        
+        return res.json({result})
+        // console.log(result);
+
+    } catch (error) {
+        return res.json({error})
+    }
+}
 module.exports={
     registerUser,
     loginUser,
     updateUser,
     assignProject,
     viewAssignedProject,
-    viewAllAssignedProjects
+    viewAllAssignedProjects,
+    userCompleteProject
 }

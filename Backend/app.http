@@ -1,11 +1,11 @@
 ###PROJECT MANAGEMENT
 POST http://localhost:5000/project
 Content-Type: application/json
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0Zjk4MTk3Ny01NDRkLTQ2MjItYjY4MC1kYTAwNzZkZjY3MDEiLCJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bnlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiMDc0MTcxMjEzMSIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MDk3ODA3OCwiZXhwIjoxNjkxMzM4MDc4fQ.6QYgXo5-reYcjOZNF1BoVz73IubnOffJR75AyO1LExU
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZjAzZDAyYS0wYzg4LTQzMmEtYmM4Yy04OGQ1YTRmNzk5NDkiLCJ1c2VyTmFtZSI6IkRhdmlkIE13YW5naSIsInVzZXJFbWFpbCI6ImRhdmlkbXVteWlyaTIwMTlAaWwuY29tIiwidXNlclBob25lIjoiMDc0MTcxMjE0OSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MTE1NjUwNCwiZXhwIjoxNjkxNTE2NTA0fQ.6W1Wd0sNruvhJLbR1hn3YXfye3YcNkV57ZuYuo7UxIU
 
 
 {
-    "projectName": "Express Way Building",
+    "projectName": "ExpressWay Building",
     "projectDescription": "Construct expressway",
     "endDate": "2027/04/04"
 }
@@ -13,10 +13,10 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0Zjk4MTk3Ny01NDRkLTQ2M
 GET http://localhost:5000/project
 
 ###GET ONE PROJECT
-GET http://localhost:5000/project/
+GET http://localhost:5000/project/880a50be-9a3b-46aa-b09e-144079f39bd1
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/
+PUT  http://localhost:5000/project/880a50be-9a3b-46aa-b09e-144079f39bd1
 Content-Type: application/json
 
 {
@@ -27,7 +27,7 @@ Content-Type: application/json
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/
+DELETE http://localhost:5000/project/880a50be-9a3b-46aa-b09e-144079f39bd1
 
 
 
@@ -37,9 +37,9 @@ Content-Type: application/json
 
 {
 
-    "userName":"Sam Ndegwa",
-    "userEmail":"david@gmail.com",
-    "userPhone":"0741712150",
+    "userName":"Calvince Ndemo",
+    "userEmail":"caly@gmail.com",
+    "userPhone":"07417121390",
     "userPassword":"12345678",
     "role":"user"
 }
@@ -50,32 +50,32 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"Sam Ndegwa",
-    "userPassword":"12345678"
+    "userName":"David Mwangi",
+    "userPassword":"12345655"
 }
 
 ###USER DETAIL UPDATE
-PUT http://localhost:5000/user/
+PUT http://localhost:5000/user/0f03d02a-0c88-432a-bc8c-88d5a4f79949
 Content-Type: application/json 
 
 {
-"userName":"David Mwangi",
-    "userEmail":"davidmumyiri2019@gmail.com",
-    "userPhone":"0741712140",
+    "userName":"DavidMwangi",
+    "userEmail":"davidmumyiri2019@il.com",
+    "userPhone":"0741712149",
     "userPassword":"12345655"
 } 
 
 ###ASSIGN PROJECT
-PUT http://localhost:5000/user/assign/5c114f46-431e-4ac2-a002-d4873ffb2b03
+PUT http://localhost:5000/user/assign/0f03d02a-0c88-432a-bc8c-88d5a4f79949
 Content-Type: application/json 
 
 {
-    "projectId":"a3162460-b519-40c9-9fa1-6fc1cfec63d4",
+    "projectId":"0dbcce63-15dd-4df6-8e4f-c5c82a083b5a",
     "assigned":1
 } 
 
 ###VIEW ASSIGNED PROJECT 
-GET http://localhost:5000/user/5c114f46-431e-4ac2-a002-d4873ffb2b03 
+GET http://localhost:5000/user/0f03d02a-0c88-432a-bc8c-88d5a4f799
 
 ###ADMIN VIEW ALL PROJECTS HE HAS ASSIGNED 
 POST http://localhost:5000/user
@@ -93,3 +93,14 @@ Content-Type: application/json
 {
     "assigned":0
 }
+
+###COMPLETE A PROJECT
+PUT http://localhost:5000/user/complete/0f03d02a-0c88-432a-bc8c-88d5a4f79949
+Content-Type: application/json
+
+{
+    "projectId": "0dbcce63-15dd-4df6-8e4f-c5c82a083b5a"
+}
+
+###VIEW ALL COMPLETED PROJECTS
+GET http://localhost:5000/project/completed/
