@@ -18,8 +18,7 @@ try {
         .input('endDate', mssql.Date, endDate)
         
         .execute('addProjectPROC')
-        
-         if(result.rowsAffected==1){  
+         if(result.rowsAffected[0]==1){  
          return res.json({
              message: "Project created Succesfully",
          })}

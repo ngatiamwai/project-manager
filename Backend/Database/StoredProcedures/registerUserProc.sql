@@ -4,4 +4,5 @@ BEGIN
 INSERT INTO userTable(userId,userName,userEmail,userPhone,userPassword,role)
 VALUES 
 (@userId,@userName,@userEmail,@userPhone,@userPassword,@role)
-END;
+END; 
+SELECT * FROM userTable
