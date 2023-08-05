@@ -1,7 +1,7 @@
 ###PROJECT MANAGEMENT
 POST http://localhost:5000/project
 Content-Type: application/json
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZjAzZDAyYS0wYzg4LTQzMmEtYmM4Yy04OGQ1YTRmNzk5NDkiLCJ1c2VyTmFtZSI6IkRhdmlkIE13YW5naSIsInVzZXJFbWFpbCI6ImRhdmlkbXVteWlyaTIwMTlAaWwuY29tIiwidXNlclBob25lIjoiMDc0MTcxMjE0OSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY5MTE1NjUwNCwiZXhwIjoxNjkxNTE2NTA0fQ.6W1Wd0sNruvhJLbR1hn3YXfye3YcNkV57ZuYuo7UxIU
+# token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZTBjMmJmZC01YjQ0LTQ0NDYtYmMxYi1hNzM1NGNhZWE0YjMiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyBOZGVtbyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0IiwicHJvZmlsZVBpYyI6bnVsbCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjkxMjI3MzQ0LCJleHAiOjE2OTE1ODczNDR9.IyhKTXefnPkp7FAQP2nESA8vIQuzvU7MyQzTwfEBmL8
 
 
 {
@@ -13,21 +13,21 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZjAzZDAyYS0wYzg4LTQzM
 GET http://localhost:5000/project
 
 ###GET ONE PROJECT
-GET http://localhost:5000/project/880a50be-9a3b-46aa-b09e-144079f39bd1
+GET http://localhost:5000/project/afd8b8ef-9412-4a9b-b4cd-d75f104c4ebf
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/880a50be-9a3b-46aa-b09e-144079f39bd1
+PUT  http://localhost:5000/project/c19abcc2-88b7-4477-9e3d-35cd241312c1
 Content-Type: application/json
 
 {
-    "projectName": "go for a walk",
-    "projectDescription": "to mine some gold coins",
-    "startDate": "2027/04/04",
-    "endDate": "2027/04/04"
+    "projectName": "Eat food",
+    "projectDescription": "enough food",
+    "startDate": "2021/04/04",
+    "endDate": "2030/04/04"
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/880a50be-9a3b-46aa-b09e-144079f39bd1
+DELETE http://localhost:5000/project/0d6d03be-7905-4ac3-a06e-5d83ed5a2014
 
 
 
@@ -37,11 +37,11 @@ Content-Type: application/json
 
 {
 
-    "userName":"Calvince Ndemo",
-    "userEmail":"caly@gmail.com",
-    "userPhone":"07417121390",
+    "userName":"Blessings Ndemo",
+    "userEmail":"clara@gmail.com",
+    "userPhone":"07404654",
     "userPassword":"12345678",
-    "role":"user"
+    "role":"admin"
 }
 
 
@@ -50,8 +50,8 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"David Mwangi",
-    "userPassword":"12345655"
+    "userName":"Blessings Ndemo",
+    "userPassword":"12345678"
 }
 
 ###USER DETAIL UPDATE
@@ -66,16 +66,16 @@ Content-Type: application/json
 } 
 
 ###ASSIGN PROJECT
-PUT http://localhost:5000/user/assign/0f03d02a-0c88-432a-bc8c-88d5a4f79949
+PUT http://localhost:5000/user/assign/9a158ba3-0ff8-4e1f-bbae-06a0bd857839
 Content-Type: application/json 
 
 {
-    "projectId":"0dbcce63-15dd-4df6-8e4f-c5c82a083b5a",
+    "projectId":"c19abcc2-88b7-4477-9e3d-35cd241312c1",
     "assigned":1
 } 
 
-###VIEW ASSIGNED PROJECT 
-GET http://localhost:5000/user/0f03d02a-0c88-432a-bc8c-88d5a4f799
+###USER TO VIEW ASSIGNED PROJECT 
+GET http://localhost:5000/user/2e0c2bfd-5b44-4446-bc1b-a7354caea4b3
 
 ###ADMIN VIEW ALL PROJECTS HE HAS ASSIGNED 
 POST http://localhost:5000/user
@@ -95,12 +95,12 @@ Content-Type: application/json
 }
 
 ###COMPLETE A PROJECT
-PUT http://localhost:5000/user/complete/0f03d02a-0c88-432a-bc8c-88d5a4f79949
+PUT http://localhost:5000/user/complete/2e0c2bfd-5b44-4446-bc1b-a7354caea4b3
 Content-Type: application/json
 
 {
-    "projectId": "0dbcce63-15dd-4df6-8e4f-c5c82a083b5a"
+    "projectId": "afd8b8ef-9412-4a9b-b4cd-d75f104c4ebf"
 }
 
 ###VIEW ALL COMPLETED PROJECTS
-GET http://localhost:5000/project/completed/
+GET http://localhost:5000/project/completed/projects
