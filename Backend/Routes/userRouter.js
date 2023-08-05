@@ -1,5 +1,5 @@
 const {Router}=require('express')
-const { registerUser, loginUser, updateUser, assignProject, viewAssignedProject, viewAllAssignedProjects } = require('../Controllers/userController')
+const { registerUser, loginUser, updateUser, assignProject, viewAssignedProject, viewAllAssignedProjects, userCompleteProject } = require('../Controllers/userController')
 const { tokenVerfying } = require('../MiddleWare/verifyToken')
 
 const userRouter=Router()
@@ -10,6 +10,8 @@ userRouter.put('/:userId',updateUser)
 userRouter.put('/assign/:userId',assignProject)
 userRouter.get('/:userId',viewAssignedProject)
 userRouter.post('/',viewAllAssignedProjects)
+userRouter.put('/:complete/:userId',userCompleteProject)
+
 
 module.exports={
     userRouter
