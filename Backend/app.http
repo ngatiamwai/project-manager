@@ -37,11 +37,11 @@ Content-Type: application/json
 
 {
 
-    "userName":"David Munyiri",
-    "userEmail":"davidmunyiri@gmail.com",
-    "userPhone":"0741712131",
+    "userName":"Sam Ndegwa",
+    "userEmail":"david@gmail.com",
+    "userPhone":"0741712150",
     "userPassword":"12345678",
-    "role":"admin"
+    "role":"user"
 }
 
 
@@ -50,7 +50,7 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"Ngatia Mwai",
+    "userName":"Sam Ndegwa",
     "userPassword":"12345678"
 }
 

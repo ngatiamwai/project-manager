@@ -5,13 +5,20 @@ const jwt=require('jsonwebtoken')
 
 const { sqlConfig } = require('../Config/config')
 const { createProjectsTable } = require('../Database/Tables/createTables')
-//const { createTableUser } = require('../Database/Tables/createTables')
+const { userRegisterValidator, userLoginValidator } = require('../Validators/userValidator')
+
+
 
 // USER REGISTRATION Controller
 const registerUser=async(req,res)=>{
     try {
         const userId=v4()
         const {userName,userPhone,userEmail,userPassword,role}=req.body
+
+        const {error}=userRegisterValidator.validate(req.body)
+        if(error){
+            return res.status(422).json(error.details[0].message)
+        }
         const salt = await bcrypt.genSalt(10)
 const hashedPassword=await bcrypt.hash(userPassword, salt)
 
@@ -27,13 +34,13 @@ const hashedPassword=await bcrypt.hash(userPassword, salt)
             .execute('registerUserProc')
            
         }).then((result)=>{
-            res.json({message:'User Registered succesfully',result})
+            return res.json({result})
         }).catch((err)=>{
-            console.log('Error')
+            return res.status(400).json({err})
         })
     } catch (error) {
        
-        res.json({Error:error.message})
+       return res.json({Error:error.message})
     }
 }
 
@@ -41,6 +48,10 @@ const hashedPassword=await bcrypt.hash(userPassword, salt)
 const loginUser=async(req,res)=>{
     try {
         const {userName,userPassword}=req.body 
+        const {error}=userLoginValidator.validate(req.body)
+        if(error){
+            return res.status(422).json(error.details[0].message)
+        }
        const pool=await mssql.connect(sqlConfig)
        const user=(await pool.request().input('userName',mssql.VarChar,userName).execute('userLoginProc')).recordset[0]
 
@@ -74,7 +85,7 @@ const updateUser=async(req,res)=>{
 
         const salt = await bcrypt.genSalt(10)
         const hashedPassword=await bcrypt.hash(userPassword, salt)
-//console.log('already here')
+
         mssql.connect(sqlConfig)
         .then((pool)=>{
             pool.request()
