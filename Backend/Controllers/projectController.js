@@ -116,6 +116,19 @@ const deleteProject= async(req,res)=>{
         
     }
 }
+const allCompletedProjects = async(req,res)=>{
+    try {
+        const pool = await (mssql.connect(sqlConfig))
+        const result = (await pool.request()
+        .execute('allCompletedProjects')).recordset
+        // console.log(result);
+        // result = result[0]
+        return res.json({completedProjects: result})
+    } catch (error) {
+        return res.json({error})
+    }
+    
+}
 
 
 module.exports = {
@@ -123,5 +136,6 @@ module.exports = {
     deleteProject,
     viewallprojects,
     getOneProject,
-    updateProject
+    updateProject,
+    allCompletedProjects
 }
