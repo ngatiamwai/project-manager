@@ -16,14 +16,14 @@ GET http://localhost:5000/project
 GET http://localhost:5000/project/afd8b8ef-9412-4a9b-b4cd-d75f104c4ebf
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/0d6d03be-7905-4ac3-a06e-5d83ed5a2014
+PUT  http://localhost:5000/project/c19abcc2-88b7-4477-9e3d-35cd241312c1
 Content-Type: application/json
 
 {
-    "projectName": "go for a walk",
-    "projectDescription": "to mine some gold coins",
-    "startDate": "2027/04/04",
-    "endDate": "2027/04/04"
+    "projectName": "Eat food",
+    "projectDescription": "enough food",
+    "startDate": "2021/04/04",
+    "endDate": "2030/04/04"
 } 
 ###DELETE PROJECT
 
@@ -66,11 +66,11 @@ Content-Type: application/json
 } 
 
 ###ASSIGN PROJECT
-PUT http://localhost:5000/user/assign/2e0c2bfd-5b44-4446-bc1b-a7354caea4b3
+PUT http://localhost:5000/user/assign/9a158ba3-0ff8-4e1f-bbae-06a0bd857839
 Content-Type: application/json 
 
 {
-    "projectId":"afd8b8ef-9412-4a9b-b4cd-d75f104c4ebf",
+    "projectId":"c19abcc2-88b7-4477-9e3d-35cd241312c1",
     "assigned":1
 } 
 

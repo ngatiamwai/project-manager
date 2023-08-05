@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            text-align: left;
+        }
+        h1 {
+            color: blue;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nyeri Project Managers</h1>
+        <h2>Hello <%= username %></h2>
+        <p>You have been assigned the following project:</p>
+        <h3><%= title %></h3>
+        <p><strong>Description:</strong> <%= desc %></p>
+        <p><strong>Deadline:</strong> <%= enddate %></p>
+        <p>Kindly work on the project within the stipulated time to avoid inconveniences.</p>
+        <p>Regards, <br/> Calvince Ndemo,<br/> CEO, Nyeri project Managers</p>
+    </div>
+</body>
+</html>

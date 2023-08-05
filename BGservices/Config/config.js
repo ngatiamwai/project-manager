@@ -20,6 +20,6 @@ const sqlConfig = {
 
 
 
-module.exports={
+module.exports = {
     sqlConfig
 }
