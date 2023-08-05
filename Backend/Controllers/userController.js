@@ -5,7 +5,7 @@ const jwt=require('jsonwebtoken')
 
 const { sqlConfig } = require('../Config/config')
 const { createProjectsTable } = require('../Database/Tables/createTables')
-const { userRegisterValidator, userLoginValidator } = require('../Validators/userValidator')
+const { userRegisterValidator, loginValidator, userUpdateValidator } = require('../Validators/userValidator')
 
 
 
@@ -48,7 +48,7 @@ const hashedPassword=await bcrypt.hash(userPassword, salt)
 const loginUser=async(req,res)=>{
     try {
         const {userName,userPassword}=req.body 
-        const {error}=userLoginValidator.validate(req.body)
+        const {error}=loginValidator.validate(req.body)
         if(error){
             return res.status(422).json(error.details[0].message)
         }
@@ -83,6 +83,10 @@ const updateUser=async(req,res)=>{
         const {userId}=req.params 
         const {userName,userEmail,userPhone,userPassword,profilePic}=req.body
 
+        const {error}=userUpdateValidator.validate(req.body)
+        if(error){
+            return res.status(422).json(error.details[0].message)
+        }
         const salt = await bcrypt.genSalt(10)
         const hashedPassword=await bcrypt.hash(userPassword, salt)
 
@@ -169,22 +173,19 @@ const userCompleteProject = async(req,res)=>{
 
 
 
-        const pool=await (mssql.connect(sqlConfig))
-        const result = await pool.request()
+        const pool=await mssql.connect(sqlConfig)
+        const result = (await pool.request()
         .input('userId', mssql.VarChar, userId)
         .input('projectId', mssql.VarChar, projectId)
-        .execute('completeProject')
+        .execute('completeProject'))
         
         if(result.rowsAffected==1){  
             return res.json({
-                message: "Project marked as completed",
-            })}
+                message: "Project marked as completed",result})}
         else{
                 return res.json({message: "Update failed, kindly ensure you have input the correct credentials"})
             }
-        
-        return res.json({result})
-        // console.log(result);
+
 
     } catch (error) {
         return res.json({error})
