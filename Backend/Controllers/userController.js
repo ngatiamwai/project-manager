@@ -32,9 +32,10 @@ const hashedPassword=await bcrypt.hash(userPassword, salt)
             .input('userPassword',hashedPassword)
             .input('role',role)
             .execute('registerUserProc')
+            .then((result)=>{
+                return res.json({message:'User Registered succes'})
+            })
            
-        }).then((result)=>{
-            return res.json({result})
         }).catch((err)=>{
             return res.status(400).json({err})
         })
@@ -191,6 +192,18 @@ const userCompleteProject = async(req,res)=>{
         return res.json({error})
     }
 }
+
+//CHECK USER 
+const checkUser=async(req,res)=>{
+    if(req.info){
+        res.json({
+            userName:req.info.userName,
+            userEmail:req.info.userEmail, 
+            userPhone:req.info.userPhone,
+            role:req.info.role
+        })
+    }
+}
 module.exports={
     registerUser,
     loginUser,
@@ -198,5 +211,6 @@ module.exports={
     assignProject,
     viewAssignedProject,
     viewAllAssignedProjects,
-    userCompleteProject
+    userCompleteProject,
+    checkUser
 }
