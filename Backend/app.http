@@ -36,12 +36,10 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-
-    "userName":"Blessings Ndemo",
-    "userEmail":"clara@gmail.com",
-    "userPhone":"07404654",
-    "userPassword":"12345678",
-    "role":"admin"
+    "userName":"Kirui",
+    "userEmail":"kiki@gmail.com",
+    "userPhone":"07097854652",
+    "userPassword":"12345678" 
 }
 
 
@@ -50,7 +48,7 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"Blessings Ndemo",
+    "userName":"Blessings",
     "userPassword":"12345678"
 }
 
@@ -87,8 +85,9 @@ Content-Type: application/json
 
 
 ###Unassigned projects
-POST http://localhost:5000/user 
+GET http://localhost:5000/user 
 Content-Type: application/json 
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGU0OTY1NC1hMTE2LTRkNWItYTQ4NC03NTNiMDMwOGE3MGUiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0NTYxMiIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOm51bGwsImlhdCI6MTY5MTMzMzM0NiwiZXhwIjoxNjkxNjkzMzQ2fQ.iHqVLhqTz5oskGr3SxdTz2hghmRTzPSdZ3V0MK9UBTo
 
 {
     "assigned":0
@@ -103,4 +102,9 @@ Content-Type: application/json
 }
 
 ###VIEW ALL COMPLETED PROJECTS
-GET http://localhost:5000/project/completed/projects
+GET http://localhost:5000/project/completed/projects 
+
+
+### GET
+ GET http://localhost:5000/user/checking
+ 
