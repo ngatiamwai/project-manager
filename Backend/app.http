@@ -5,6 +5,7 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZTBjMmJmZC01YjQ0LTQ0N
 
 
 {
+
     "projectName": "Nairobi school",
     "projectDescription": "run on the runways",
     "endDate": "2027/04/04"
@@ -49,8 +50,8 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"jese faith",
-    "userPassword":"12345655"
+    "userName":"Ngatia Mwai",
+    "userPassword":"12345678"
 }
 
 ###USER DETAIL UPDATE
@@ -66,12 +67,12 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiM2ZjNWE1YS1hYjE2LTQw
 } 
 
 ###ASSIGN PROJECT
-PUT http://localhost:5000/user/assign/ed2e6eba-8bdf-4e4f-8ac6-03dfa5ca4bd5
+PUT http://localhost:5000/user/assign/719f7f53-3fd0-4d24-9472-3beec0c2f402
 Content-Type: application/json 
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzOTQ1Y2Y2MC00OTJiLTQ3NTQtOGQ2MC1mNDQ2YTBiOGIxZjgiLCJ1c2VyTmFtZSI6IktpcnVpIiwidXNlckVtYWlsIjoia2lraUBnbWFpbC5jb20iLCJ1c2VyUGhvbmUiOiIwNzA5Nzg1NDY1MiIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDAyNjUxLCJleHAiOjE2OTE3NjI2NTF9.L24C1GGGUXIq6zm1CVfdr0omIO6hFnZJoJpyYXhVduo
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3MTlmN2Y1My0zZmQwLTRkMjQtOTQ3Mi0zYmVlYzBjMmY0MDIiLCJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3OTM2OTMyMjQiLCJwcm9maWxlUGljIjpudWxsLCJpYXQiOjE2OTE0MDg4MDEsImV4cCI6MTY5MTc2ODgwMX0.iYs5wnkAdKEY7Z3wwQqcS80rIZYviRY66wVK84N25z0
 
 {
-    "projectId":"381246da-c1a1-4d98-8b11-b9ae45127bea",
+    "projectId":"6b318c3a-8ece-4a07-aa45-a0ad0b39f39b",
     "assigned":1
 } 
 
@@ -80,13 +81,11 @@ GET http://localhost:5000/user/ed2e6eba-8bdf-4e4f-8ac6-03dfa5ca4bd5
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzOTQ1Y2Y2MC00OTJiLTQ3NTQtOGQ2MC1mNDQ2YTBiOGIxZjgiLCJ1c2VyTmFtZSI6IktpcnVpIiwidXNlckVtYWlsIjoia2lraUBnbWFpbC5jb20iLCJ1c2VyUGhvbmUiOiIwNzA5Nzg1NDY1MiIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDAyNjUxLCJleHAiOjE2OTE3NjI2NTF9.L24C1GGGUXIq6zm1CVfdr0omIO6hFnZJoJpyYXhVduo
 
 ###ADMIN VIEW ALL PROJECTS HE HAS ASSIGNED 
-GET  http://localhost:5000/user
+GET http://localhost:5000/user/view/0
 Content-Type: application/json 
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiNTk0NTkwNSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDA2NjQ4LCJleHAiOjE2OTE3NjY2NDh9.6b1JjKV58XVGNYAXhmwD4if-vpYj8i9tVohbIT7_YRM
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGU0OTY1NC1hMTE2LTRkNWItYTQ4NC03NTNiMDMwOGE3MGUiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0NTYxMiIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOm51bGwsImlhdCI6MTY5MTMzMzM0NiwiZXhwIjoxNjkxNjkzMzQ2fQ.iHqVLhqTz5oskGr3SxdTz2hghmRTzPSdZ3V0MK9UBTo
 
-{
-    "assigned":1
-} 
+
 
 
 ###Unassigned projects

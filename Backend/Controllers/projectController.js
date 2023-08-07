@@ -10,7 +10,7 @@ try {
     createProjectsTable()
     const projectId = v4()
     const {projectName,projectDescription,endDate} = req.body
-
+console.log(req.body)
     const pool = await mssql.connect(sqlConfig)
     if(pool.connected){
         const result = await pool.request()

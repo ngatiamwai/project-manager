@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
     
     <title>Project Manager</title>
@@ -16,21 +17,22 @@
             </div>
         </div>
         <div class="right">
-            <form action="" >
+            <form id="loginForm" >
                 <div class="email">
-                    <input type="text" placeholder="Email">
+                    <input type="text" class="loginuserName" placeholder="UserName">
                 </div>
                 <div class="password">
-                    <input type="password" placeholder="Password">
+                    <input type="password" class="loginPassword" placeholder="Password">
                 </div>
-                <button>Log In</button>
+                <button type="submit">Log In</button>
                 <div class="alreadyWithAccount">
                     <p>Don't have an account? <br> <div class="logIn" style="color: rgba(88, 53, 146, 0.87);"><a href="/Frontend/index.html">Sign up</a></div> </p>
                 </div>
             </form>
         </div>
     </div>
+    <script src="login.js" defer></script>
 </body>
 </html>
 
-style="margin-top: 35vh;"
+
