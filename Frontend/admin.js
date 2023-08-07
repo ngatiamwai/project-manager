@@ -235,7 +235,89 @@ function completedProjects() {
     document.getElementById("completedProjects").style.display = "block";
     document.getElementById("users").style.display = "none";
 
-    
+    axios 
+    .get(
+        "http://localhost:5000/project/completed/projects",
+
+
+        {
+          headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json",
+          },
+        }
+      )
+      .then((res)=>{
+        const dara=res.data
+         const completed=document.querySelector('.completedProjects')
+        console.log(dara.completedProjects)
+        
+        const singleProject= document.createElement('div')
+        let html = ''    
+    dara.completedProjects.forEach(project => {
+        html+=`
+            <div class="actualContent">
+            <div class="actualContentBody">
+                <div class="actualContentBody1">
+                    <p>Project:</p>
+                </div>
+                <div class="actualContentBody2">
+                    <p style="font-weight: bold;">
+                        ${project.projectName}
+                    </p>
+                </div>
+                <div class="actualContentBody3">
+                    <p class="complete">COMPLETED</p>
+                </div>
+            </div>
+            <div class="actualContentBody">
+                <div class="actualContentBody1">
+                    <p>Description:</p>
+                </div>
+                <div class="actualContentBody2">
+                    <p>
+                       ${project.projectDescription}
+                    </p>
+                </div>
+                <div class="actualContentBody3">
+                    <p class="delete">DELETE</p>
+                </div>
+            </div>
+            <div class="actualContentBody">
+                <div class="actualContentBody1">
+                    <p>Assigned to:</p>
+                </div>
+                <div class="actualContentBody2">
+                    <p>
+                        Ngatia Mwai
+                    </p>
+                </div>
+            </div>
+            <div class="actualContentBody">
+                <div class="actualContentBody1">
+                    <p>Due Date:</p>
+                </div>
+                <div class="actualContentBody2">
+                    <p>
+                        ${project.endDate}
+                    </p>
+                </div>
+            </div>
+        </div>
+         `
+         
+    })
+        
+        
+         
+         singleProject.innerHTML=html
+         console.log(singleProject)
+         completed.appendChild(singleProject)
+      })
+
+
+
+
 }
 function users() {
     document.getElementById("createProject").style.display = "none";
@@ -243,4 +325,53 @@ function users() {
     document.getElementById("unassignedProjects").style.display = "none";
     document.getElementById("completedProjects").style.display = "none";
     document.getElementById("users").style.display = "block";
+
+
+    axios 
+    .get(
+        "http://localhost:5000/user/all/users",
+
+
+        {
+          headers: {
+            "Accept": "application/json",
+            "Content-type": "application/json",
+          },
+        }
+      )
+      .then((res)=>{
+        const dara=res.data
+        console.log(dara)
+         const getUsers=document.querySelector('.users')
+        console.log(dara.allusers)
+        
+        const singleProject= document.createElement('div')
+        let html = ''    
+    dara.allusers.forEach(user => {
+        html+=`
+        <div class="users2">
+        <div class="profileImage">
+            <img src="../Frontend/Images/images.jpg" alt="" class="image">
+        </div>
+        <div class="info">
+            <p>${user.userName}</p>
+            <p style="color: rgba(0, 0, 0, 0.46);">${user.userEmail}</p>
+        </div>
+        <div class="assignedOrNot">
+            <p>Assigned</p>
+        </div>
+        <select name="" id="" class="assign">
+            <option value="">ASSIGN</option>
+        </select>    
+    </div>
+         `
+         
+    })
+        
+        
+         
+         singleProject.innerHTML=html
+         console.log(singleProject)
+         getUsers.appendChild(singleProject)
+      })
 }
