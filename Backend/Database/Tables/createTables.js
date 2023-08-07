@@ -18,7 +18,7 @@ const createTableUser=async(req,res)=>{
             END TRY
         BEGIN 
             CATCH 
-            THROW 50001,'Table has already been created',1
+            -- THROW 50001,'Table has already been created',1
             END 
         CATCH 
         `
@@ -27,7 +27,7 @@ await pool.query(table,(err)=>{
     if(err instanceof mssql.RequestError){
         console.log({Error:err.message})
     }else{
-        console.log('UserTable Created as success')
+        // console.log('UserTable Created as success')
     }
 })
     } catch (error) {
@@ -46,14 +46,21 @@ const createProjectsTable = async(req, res)=>{
                 projectName VARCHAR(500) NOT NULL,
                 projectDescription VARCHAR(1000) NOT NULL,
                 startDate DATE DEFAULT GETDATE(),
-                endDate DATE NOT null,
-                status BIT DEFAULT 0
+                endDate DATE NOT NULL,
+                status BIT DEFAULT 0,
+                assignedTo VARCHAR(100),
+                assigned BIT DEFAULT 0,
+                userAssignedEmailed BIT DEFAULT 0,
+                emailAdminCompleted BIT DEFAULT 0,
+                FOREIGN KEY (assignedTo) REFERENCES userTable (userId)
+                ON DELETE SET NULL
+                ON UPDATE CASCADE
             )
     
         END TRY
     BEGIN
         CATCH
-            THROW 50001, 'Table already Exists!', 1;
+            -- THROW 50001, 'Table already Exists!', 1;
         END CATCH`;
 
     const pool = await mssql.connect(sqlConfig)//ensure connected to my database
@@ -63,7 +70,7 @@ const createProjectsTable = async(req, res)=>{
             console.log({Error: err.message});
         }
         else{
-            console.log('Table Created Successfully');
+            // console.log('Table Created Successfully');
         }
     })
 

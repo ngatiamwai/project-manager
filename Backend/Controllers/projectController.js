@@ -2,13 +2,15 @@ const {v4} = require('uuid')
 const mssql = require('mssql')
 
 const { sqlConfig } = require('../Config/config')
-const { createProjectsTable } = require('../Database/Tables/createTables')
+const { createProjectsTable, createTableUser } = require('../Database/Tables/createTables')
 
 const createProject = async(req,res)=>{
 try {
+    createTableUser()
+    createProjectsTable()
     const projectId = v4()
     const {projectName,projectDescription,endDate} = req.body
-
+console.log(req.body)
     const pool = await mssql.connect(sqlConfig)
     if(pool.connected){
         const result = await pool.request()
@@ -32,7 +34,7 @@ try {
     
 } catch (error) {
     createProjectsTable()
-    return res.json({message: "did not find the table click again because the table will be created"})
+    return res.json({error: "Wrong date details"})
 }   }
 
 const viewallprojects = async(req, res)=>{
@@ -130,11 +132,26 @@ const allCompletedProjects = async(req,res)=>{
 }
 
 
+const unassignedProjects = async(req, res)=>{
+    try {
+        const projectId = req.params.projectId
+        const pool = await (mssql.connect(sqlConfig))
+        const result = (await pool.request()
+            .execute('unassignedProjectsProc')).recordset
+        return res.json({projects: result})    
+    } catch (error) {
+        return res.json({error})
+    }
+    
+    
+}
+
 module.exports = {
     createProject,
     deleteProject,
     viewallprojects,
     getOneProject,
     updateProject,
-    allCompletedProjects
+    allCompletedProjects,
+    unassignedProjects
 }

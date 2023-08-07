@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Project Manager: Create Project</title>
 </head>
@@ -36,234 +37,34 @@
             <div class="content2">
                 <div id="createProject">
                     <div class="createProject">
-                        <form action="">
+                        <form action="" class="createproject">
                             <div class="projectTitle">
                                 <p>Project Title:</p>
                                 <div class="inputTitle">
-                                    <textarea type="text" placeholder="Project Title"
+                                    <textarea type="text" class="Title" placeholder="Project Title"
                                         style="height: 7vh; width: 30vw;"></textarea>
                                 </div>
                             </div>
                             <div class="projectDescription">
                                 <p>Project Description:</p>
-                                <textarea name="" id="" cols="30" rows="10" style="height: 20vh; width: 30vw;"
+                                <textarea name="" class="Description" cols="30" rows="10" style="height: 20vh; width: 30vw;"
                                     placeholder="Project Description"></textarea>
                             </div>
                             <div class="dueDate">
                                 <p>Due Date:</p>
-                                <input type="date" placeholder="Date" style="height: 7vh; width: 30vw;">
+                                <input type="date" class="Date" placeholder="Date" style="height: 7vh; width: 30vw;">
                             </div>
-                            <Button style="width: 30vw;">Create Project</Button>
+                            <Button type="submit" style="width: 30vw;">Create Project</Button>
                         </form>
                     </div>
                 </div>
                 <div class="assignedProjects" id="assignedProjects" style="display: none;">
-                    <div class="actualContent">
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Project:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p style="font-weight: bold;">
-                                    Create a user interface for Task Manager
-                                    Website
-                                </p>
-                            </div>
-                            <div class="actualContentBody3">
-                                <p class="update">UPDATE</p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Description:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    You are to create an interface that meets the
-                                    requirements that i have shared on your email
-                                </p>
-                            </div>
-                            <div class="actualContentBody3">
-                                <p class="delete">DELETE</p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Assigned to:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    Ngatia Mwai
-                                </p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Due Date:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    02-08-2023
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actualContent">
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Project:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p style="font-weight: bold;">
-                                    Create a user interface for Task Manager
-                                    Website
-                                </p>
-                            </div>
-                            <div class="actualContentBody3">
-                                <p class="update">UPDATE</p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Description:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    You are to create an interface that meets the
-                                    requirements that i have shared on your email
-                                </p>
-                            </div>
-                            <div class="actualContentBody3">
-                                <p class="delete">DELETE</p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Assigned to:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    Ngatia Mwai
-                                </p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Due Date:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    02-08-2023
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    
+
                 </div>
                 <div class="unassignedProjects" id="unassignedProjects" style="display: none;">
-                    <div class="actualContent">
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Project:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p style="font-weight: bold;">
-                                    Create a user interface for Task Manager
-                                    Website
-                                </p>
-                            </div>
-                            <div class="actualContentBody3">
-                                <select class="assign" id="">
-                                    <option value="name">ASSIGN</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Description:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    You are to create an interface that meets the
-                                    requirements that i have shared on your email
-                                </p>
-                            </div>
-                            <div class="actualContentBody3">
-                                <p class="update">UPDATE</p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Assigned to:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    Ngatia Mwai
-                                </p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Due Date:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    02-08-2023
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="actualContent">
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Project:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p style="font-weight: bold;">
-                                    Create a user interface for Task Manager
-                                    Website
-                                </p>
-                            </div>
-                            <div class="actualContentBody3">
-                                <select class="assign" id="">
-                                    <option value="name">ASSIGN</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Description:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    You are to create an interface that meets the
-                                    requirements that i have shared on your email
-                                </p>
-                            </div>
-                            <div class="actualContentBody3">
-                                <p class="update">UPDATE</p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Assigned to:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    Ngatia Mwai
-                                </p>
-                            </div>
-                        </div>
-                        <div class="actualContentBody">
-                            <div class="actualContentBody1">
-                                <p>Due Date:</p>
-                            </div>
-                            <div class="actualContentBody2">
-                                <p>
-                                    02-08-2023
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
                 <div class="completedProjects" id="completedProjects" style="display: none;">
                     <div class="actualContent">
@@ -389,44 +190,7 @@
 
     </div>
 
-    <script>
-        function createProject() {
-            document.getElementById("createProject").style.display = "block";
-            document.getElementById("assignedProjects").style.display = "none";
-            document.getElementById("unassignedProjects").style.display = "none";
-            document.getElementById("completedProjects").style.display = "none";
-            document.getElementById("users").style.display = "none";
-        }
-        function assignedProjects() {
-            document.getElementById("createProject").style.display = "none";
-            document.getElementById("assignedProjects").style.display = "block";
-            document.getElementById("unassignedProjects").style.display = "none";
-            document.getElementById("completedProjects").style.display = "none";
-            document.getElementById("users").style.display = "none";
-        }
-        function unassignedProjects() {
-            document.getElementById("createProject").style.display = "none";
-            document.getElementById("assignedProjects").style.display = "none";
-            document.getElementById("unassignedProjects").style.display = "block";
-            document.getElementById("completedProjects").style.display = "none";
-            document.getElementById("users").style.display = "none";
-        }
-        function completedProjects() {
-            document.getElementById("createProject").style.display = "none";
-            document.getElementById("assignedProjects").style.display = "none";
-            document.getElementById("unassignedProjects").style.display = "none";
-            document.getElementById("completedProjects").style.display = "block";
-            document.getElementById("users").style.display = "none";
-        }
-        function users() {
-            document.getElementById("createProject").style.display = "none";
-            document.getElementById("assignedProjects").style.display = "none";
-            document.getElementById("unassignedProjects").style.display = "none";
-            document.getElementById("completedProjects").style.display = "none";
-            document.getElementById("users").style.display = "block";
-        }
-        
-    </script>
+    <script src="admin.js" defer> </script>
 </body>
 
 </html>

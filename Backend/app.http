@@ -1,22 +1,23 @@
 ###PROJECT MANAGEMENT
 POST http://localhost:5000/project
 Content-Type: application/json
-# token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZTBjMmJmZC01YjQ0LTQ0NDYtYmMxYi1hNzM1NGNhZWE0YjMiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyBOZGVtbyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0IiwicHJvZmlsZVBpYyI6bnVsbCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjkxMjI3MzQ0LCJleHAiOjE2OTE1ODczNDR9.IyhKTXefnPkp7FAQP2nESA8vIQuzvU7MyQzTwfEBmL8
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZTBjMmJmZC01YjQ0LTQ0NDYtYmMxYi1hNzM1NGNhZWE0YjMiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyBOZGVtbyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0IiwicHJvZmlsZVBpYyI6bnVsbCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjkxMjI3MzQ0LCJleHAiOjE2OTE1ODczNDR9.IyhKTXefnPkp7FAQP2nESA8vIQuzvU7MyQzTwfEBmL8
 
 
 {
-    "projectName": "ExpressWay Building",
-    "projectDescription": "Construct expressway",
+
+    "projectName": "Nairobi school",
+    "projectDescription": "run on the runways",
     "endDate": "2027/04/04"
 }
 ###GET ALL PROJECTS
 GET http://localhost:5000/project
 
 ###GET ONE PROJECT
-GET http://localhost:5000/project/afd8b8ef-9412-4a9b-b4cd-d75f104c4ebf
+GET http://localhost:5000/project/381246da-c1a1-4d98-8b11-b9ae45127bea
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/c19abcc2-88b7-4477-9e3d-35cd241312c1
+PUT  http://localhost:5000/project/381246da-c1a1-4d98-8b11-b9ae45127bea
 Content-Type: application/json
 
 {
@@ -27,7 +28,7 @@ Content-Type: application/json
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/0d6d03be-7905-4ac3-a06e-5d83ed5a2014
+DELETE http://localhost:5000/project/0981945b-431d-4793-8bc7-89bac0545898
 
 
 
@@ -36,75 +37,80 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-    "userName":"Kirui",
-    "userEmail":"kiki@gmail.com",
-    "userPhone":"07097854652",
+    "userName":"Ngatia Mwai",
+    "userEmail":"ngatiamwai25@gmail.com",
+    "userPhone":"07097854661",
     "userPassword":"12345678" 
 }
-
+###ALL USERS
+GET http://localhost:5000/user/all/users
 
 ###LOGIN USER
 POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"Blessings",
+    "userName":"Ngatia Mwai",
     "userPassword":"12345678"
 }
 
 ###USER DETAIL UPDATE
-PUT http://localhost:5000/user/0f03d02a-0c88-432a-bc8c-88d5a4f79949
+PUT http://localhost:5000/user/update/ce19741c-758a-4b15-b6cb-d5d42e14b2cc
 Content-Type: application/json 
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiM2ZjNWE1YS1hYjE2LTQwZGYtOTYyNy02M2JjYjBhMmNjZmIiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJmYWl0aEBnbWFpbC5jb20iLCJ1c2VyUGhvbmUiOiIwNzA5Nzg1NDY1OSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDAwNjM5LCJleHAiOjE2OTE3NjA2Mzl9.GBZo1EEi2bZfFG9XzPQlYJ7_vlWVHMgYQeNYGdcQZG8
 
 {
-    "userName":"DavidMwangi",
-    "userEmail":"davidmumyiri2019@il.com",
-    "userPhone":"0741712149",
+    "userName":"jese faith",
+    "userEmail":"selesterat@gmail.com",
+    "userPhone": "5945905",
     "userPassword":"12345655"
 } 
 
 ###ASSIGN PROJECT
-PUT http://localhost:5000/user/assign/9a158ba3-0ff8-4e1f-bbae-06a0bd857839
+PUT http://localhost:5000/user/assign/719f7f53-3fd0-4d24-9472-3beec0c2f402
 Content-Type: application/json 
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3MTlmN2Y1My0zZmQwLTRkMjQtOTQ3Mi0zYmVlYzBjMmY0MDIiLCJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3OTM2OTMyMjQiLCJwcm9maWxlUGljIjpudWxsLCJpYXQiOjE2OTE0MDg4MDEsImV4cCI6MTY5MTc2ODgwMX0.iYs5wnkAdKEY7Z3wwQqcS80rIZYviRY66wVK84N25z0
 
 {
-    "projectId":"c19abcc2-88b7-4477-9e3d-35cd241312c1",
+    "projectId":"6b318c3a-8ece-4a07-aa45-a0ad0b39f39b",
     "assigned":1
 } 
 
 ###USER TO VIEW ASSIGNED PROJECT 
-GET http://localhost:5000/user/2e0c2bfd-5b44-4446-bc1b-a7354caea4b3
+GET http://localhost:5000/user/ed2e6eba-8bdf-4e4f-8ac6-03dfa5ca4bd5
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzOTQ1Y2Y2MC00OTJiLTQ3NTQtOGQ2MC1mNDQ2YTBiOGIxZjgiLCJ1c2VyTmFtZSI6IktpcnVpIiwidXNlckVtYWlsIjoia2lraUBnbWFpbC5jb20iLCJ1c2VyUGhvbmUiOiIwNzA5Nzg1NDY1MiIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDAyNjUxLCJleHAiOjE2OTE3NjI2NTF9.L24C1GGGUXIq6zm1CVfdr0omIO6hFnZJoJpyYXhVduo
 
 ###ADMIN VIEW ALL PROJECTS HE HAS ASSIGNED 
-POST http://localhost:5000/user
-Content-Type: application/json 
-
-{
-    "assigned":1
-} 
-
-
-###Unassigned projects
-GET http://localhost:5000/user 
+GET http://localhost:5000/user/view/0
 Content-Type: application/json 
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGU0OTY1NC1hMTE2LTRkNWItYTQ4NC03NTNiMDMwOGE3MGUiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0NTYxMiIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOm51bGwsImlhdCI6MTY5MTMzMzM0NiwiZXhwIjoxNjkxNjkzMzQ2fQ.iHqVLhqTz5oskGr3SxdTz2hghmRTzPSdZ3V0MK9UBTo
 
+
+
+
+###Unassigned projects
+GET http://localhost:5000/project/unasigned/projects
+Content-Type: application/json 
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiNTk0NTkwNSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDA2NjQ4LCJleHAiOjE2OTE3NjY2NDh9.6b1JjKV58XVGNYAXhmwD4if-vpYj8i9tVohbIT7_YRM
+
 {
-    "assigned":0
+    
 }
 
 ###COMPLETE A PROJECT
-PUT http://localhost:5000/user/complete/2e0c2bfd-5b44-4446-bc1b-a7354caea4b3
+PUT http://localhost:5000/user/complete/ed2e6eba-8bdf-4e4f-8ac6-03dfa5ca4bd5
 Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiNTk0NTkwNSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDA2NjQ4LCJleHAiOjE2OTE3NjY2NDh9.6b1JjKV58XVGNYAXhmwD4if-vpYj8i9tVohbIT7_YRM
 
 {
-    "projectId": "afd8b8ef-9412-4a9b-b4cd-d75f104c4ebf"
+    "projectId": "381246da-c1a1-4d98-8b11-b9ae45127bea"
 }
 
 ###VIEW ALL COMPLETED PROJECTS
 GET http://localhost:5000/project/completed/projects 
 
+###READ TOKEN
+GET http://localhost:5000/user/check/token
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJzZWxlc3RlcmF0QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjU5NDU5MDUiLCJwcm9maWxlUGljIjpudWxsLCJyb2xlIjoidXNlciIsImlhdCI6MTY5MTQxMjg3NywiZXhwIjoxNjkxNzcyODc3fQ.5JDy_59rqIUPkjm2xf4X7QsVR4a_PPPbICnvnDWriGA
 
-### GET
- GET http://localhost:5000/user/checking
  
