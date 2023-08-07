@@ -110,6 +110,8 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRi
 ###VIEW ALL COMPLETED PROJECTS
 GET http://localhost:5000/project/completed/projects 
 
-
+###READ TOKEN
+GET http://localhost:5000/user/check/token
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJzZWxlc3RlcmF0QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjU5NDU5MDUiLCJwcm9maWxlUGljIjpudWxsLCJyb2xlIjoidXNlciIsImlhdCI6MTY5MTQxMjg3NywiZXhwIjoxNjkxNzcyODc3fQ.5JDy_59rqIUPkjm2xf4X7QsVR4a_PPPbICnvnDWriGA
 
  

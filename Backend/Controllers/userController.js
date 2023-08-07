@@ -211,6 +211,17 @@ const userCompleteProject = async(req,res)=>{
         return res.json({error})
     }
 }
+const checkUser = async(req,res)=>{
+    if(req.info){
+        res.json({
+            userName: req.info.userName,
+            userEmail: req.info.userEmail,
+            userPhone: req.info.userPhone,
+            profilePic: req.info.profilePic,
+            role: req.info.role
+        })
+    }
+}
 
 
 module.exports={
@@ -221,5 +232,7 @@ module.exports={
     viewAssignedProject,
     viewAllAssignedProjects,
     userCompleteProject,
-    allusers
+    allusers,
+    checkUser
 }
+
