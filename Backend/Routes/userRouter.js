@@ -9,7 +9,7 @@ userRouter.post('/login',loginUser)
 userRouter.put('/:userId',tokenVerfying,updateUser)
 userRouter.put('/assign/:userId',tokenVerfying,assignProject)
 userRouter.get('/:userId',tokenVerfying,viewAssignedProject)
-userRouter.get('/',tokenVerfying,viewAllAssignedProjects)
+userRouter.get('/view/:assigned',viewAllAssignedProjects)
 userRouter.put('/:complete/:userId',tokenVerfying,userCompleteProject)
 userRouter.get('/checking',checkUser)
 

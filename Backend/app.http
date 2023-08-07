@@ -5,8 +5,8 @@ Content-Type: application/json
 
 
 {
-    "projectName": "ExpressWay Building",
-    "projectDescription": "Construct expressway",
+    "projectName": "Hospital Building",
+    "projectDescription": "Construct hospital",
     "endDate": "2027/04/04"
 }
 ###GET ALL PROJECTS
@@ -36,10 +36,11 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-    "userName":"Kirui",
-    "userEmail":"kiki@gmail.com",
-    "userPhone":"07097854652",
-    "userPassword":"12345678" 
+    "userName":"Ngatia Mwai",
+    "userEmail":"ngatiamwai25@gmail.com",
+    "userPhone":"0793693224",
+    "userPassword":"12345678"
+    
 }
 
 
@@ -48,7 +49,7 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"Blessings",
+    "userName":"Ngatia Mwai",
     "userPassword":"12345678"
 }
 
@@ -64,11 +65,12 @@ Content-Type: application/json
 } 
 
 ###ASSIGN PROJECT
-PUT http://localhost:5000/user/assign/9a158ba3-0ff8-4e1f-bbae-06a0bd857839
+PUT http://localhost:5000/user/assign/719f7f53-3fd0-4d24-9472-3beec0c2f402
 Content-Type: application/json 
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3MTlmN2Y1My0zZmQwLTRkMjQtOTQ3Mi0zYmVlYzBjMmY0MDIiLCJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3OTM2OTMyMjQiLCJwcm9maWxlUGljIjpudWxsLCJpYXQiOjE2OTE0MDg4MDEsImV4cCI6MTY5MTc2ODgwMX0.iYs5wnkAdKEY7Z3wwQqcS80rIZYviRY66wVK84N25z0
 
 {
-    "projectId":"c19abcc2-88b7-4477-9e3d-35cd241312c1",
+    "projectId":"6b318c3a-8ece-4a07-aa45-a0ad0b39f39b",
     "assigned":1
 } 
 
@@ -76,12 +78,11 @@ Content-Type: application/json
 GET http://localhost:5000/user/2e0c2bfd-5b44-4446-bc1b-a7354caea4b3
 
 ###ADMIN VIEW ALL PROJECTS HE HAS ASSIGNED 
-POST http://localhost:5000/user
+GET http://localhost:5000/user/view/0
 Content-Type: application/json 
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGU0OTY1NC1hMTE2LTRkNWItYTQ4NC03NTNiMDMwOGE3MGUiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0NTYxMiIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOm51bGwsImlhdCI6MTY5MTMzMzM0NiwiZXhwIjoxNjkxNjkzMzQ2fQ.iHqVLhqTz5oskGr3SxdTz2hghmRTzPSdZ3V0MK9UBTo
 
-{
-    "assigned":1
-} 
+
 
 
 ###Unassigned projects
