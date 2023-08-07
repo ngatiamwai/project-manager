@@ -47,13 +47,19 @@ signupForm.addEventListener("submit", (e) => {
   }
 });
 
+
 function viewProjects() {
     document.getElementById("projectsSection").style.display = "block";
     document.getElementById("profileSection").style.display = "none";
 
+    let userId=localStorage.getItem('id')
+    console.log(userId)
+    const actualContent=document.querySelector('.actualContent')
+    
+    
     axios
       .get(
-        `http://localhost:5000/user/f06615ac-6fe4-43cc-8f5a-833f7d671f6a}`,
+        `http://localhost:5000/user/${userId}`,
 
         {
           headers: {
@@ -64,14 +70,58 @@ function viewProjects() {
         }
       )
       .then((response) => {
-        console.log(response.data);
+       const project=response.data.result
+       console.log(project.projectName,project.startDate)
+       let myProject=document.createElement('div')
+       let html=''
+       html+=`
+       <div class="actualContentBody">
+       <div class="actualContentBody1">
+           <p>Project:</p>
+       </div>
+       <div class="actualContentBody2">
+           <p style="font-weight: bold;">
+              ${project.projectName}
+           </p>
+       </div>
+       <div class="actualContentBody3">
+           <p class="complete">COMPLETE</p>
+       </div>
+   </div>
+   <div class="actualContentBody">
+       <div class="actualContentBody1">
+           <p>Description:</p>
+       </div>
+       <div class="actualContentBody2">
+           <p>
+               ${project.projectDescription}
+           </p>
+       </div>
+   </div>
+   <div class="actualContentBody">
+                            <div class="actualContentBody1">
+                                <p>Due Date:</p>
+                            </div>
+                            <div class="actualContentBody2">
+                                <p>
+                                    ${project.endDate}
+                                </p>
+                            </div>
+                        </div>
+       `
+       myProject.innerHTML=html
+       actualContent.appendChild(myProject)
       
       })
       .catch((e) => {
         console.log(e);
       });
+    }
 
-}
+
+
+
+//
 function editProfile() {
     document.getElementById("projectsSection").style.display = "none";
     document.getElementById("profileSection").style.display = "block";
@@ -90,7 +140,7 @@ updateForm.addEventListener("submit", (e) => {
   
     axios
       .put(
-        `http://localhost:5000/user/update/${localStorage.getItem('userId')}`,
+        `http://localhost:5000/user/update/${userId}`,
 
         {
           userName: updateUsername.value,

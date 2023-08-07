@@ -220,8 +220,6 @@ function unassignedProjects() {
          
     })
         
-        
-         
          singleProject.innerHTML=html
          console.log(singleProject)
          unAssigned.appendChild(singleProject)
