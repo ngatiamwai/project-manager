@@ -9,6 +9,8 @@ BEGIN
             status BIT DEFAULT 0,
             assignedTo VARCHAR(100),
             assigned BIT DEFAULT 0,
+			userAssignedEmailed BIT DEFAULT 0,
+			emailAdminCompleted BIT DEFAULT 0,
             FOREIGN KEY (assignedTo) REFERENCES userTable (userId)
             ON DELETE SET NULL
             ON UPDATE CASCADE
@@ -20,3 +22,10 @@ BEGIN
         THROW 50001, 'Table already Exists!', 1;
     END CATCH  
     
+
+
+
+
+
+
+
