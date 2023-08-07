@@ -39,21 +39,21 @@
             <!-- Sign-up form -->
             <form id="signupForm" action="" style="display: none; flex-direction: column;">
                 <div class="name">
-                    <input type="text" placeholder="Name">
+                    <input type="text" class="userName"  placeholder="Name">
                 </div>
                 <div class="email">
-                    <input type="text" placeholder="Email">
+                    <input type="text" class="userEmail" placeholder="Email">
                 </div>
                 <div class="phoneNumber">
-                    <input type="text" placeholder="Phone Number">
+                    <input type="text" class="userPhone" placeholder="Phone Number">
                 </div>
                 <div class="password">
-                    <input type="password" placeholder="Password">
+                    <input type="password" class="userPassword" placeholder="Password">
                 </div>
-                <div class="confirmPassword">
+                <!-- <div class="confirmPassword">
                     <input type="password" placeholder="Confirm Password">
-                </div>
-                <button>Register</button>
+                </div> -->
+                <button class="submit" type="submit">Register</button>
                 <div class="alreadyWithAccount">
                     <p>Already have an account? <br>
                     <div class="logIn" style="color: rgba(88, 53, 146, 0.87);" onclick="toggleForm('loginForm')">Log in
@@ -62,24 +62,13 @@
                 </div>
             </form>
 
-            <script>
-                function toggleForm(formId) {
-                    const loginForm = document.getElementById("loginForm");
-                    const signupForm = document.getElementById("signupForm");
-
-                    if (formId === "signupForm") {
-                        loginForm.style.display = "none";
-                        signupForm.style.display = "flex";
-                    } else if (formId === "loginForm") {
-                        loginForm.style.display = "flex";
-                        loginForm.style.marginTop = "20vh";
-                        signupForm.style.display = "none";
-                    }
-                }
+            <script src="main.js">
+          
             </script>
             </form>
         </div>
     </div>
+    
 </body>
 
 </html>
