@@ -15,7 +15,7 @@ const registerUser=async(req,res)=>{
         createTableUser()
         const userId=v4()
 
-        const {userName,userPhone,userEmail,userPassword}=req.body
+        const {userName,userPhone,userEmail,userPassword,role}=req.body
 
         const {error}=userRegisterValidator.validate(req.body)
         if(error){
@@ -32,6 +32,7 @@ const registerUser=async(req,res)=>{
             .input('userName',userName)
             .input('userEmail',userEmail)
             .input('userPhone',userPhone)
+            .input('role',role)
             .input('userPassword',hashedPassword)
             .execute('registerUserProc'))
             if(result.rowsAffected[0]==1){
@@ -55,8 +56,8 @@ const registerUser=async(req,res)=>{
 const allusers = async(req,res)=>{
 try {
     const pool=await mssql.connect(sqlConfig)
-    const users = (await pool.request().execute('getAllUsersProc')).recordset 
-    res.json({allUsers: users})
+    const users = (await pool.request().execute('getAllUsersProc')).recordset
+    res.json({allusers:users})
 } catch (error) {
     return res.json({error})
 }
@@ -65,7 +66,7 @@ try {
 //USER LOGIN Controller
 const loginUser=async(req,res)=>{
     try {
-        const {userName,userPassword,role}=req.body 
+        const {userName,userPassword,role,userId}=req.body 
         const {error}=loginValidator.validate(req.body)
         if(error){
             return res.status(422).json(error.details[0].message)
@@ -79,9 +80,9 @@ const loginUser=async(req,res)=>{
         const comparePassword=await bcrypt.compare(userPassword, hashedPassword)
 
         if(comparePassword){
-            const {userPassword,role,...payload}=user 
+            const {userPassword,role,userId,...payload}=user 
             const token=jwt.sign(payload, process.env.SECRET,{expiresIn:'360000s'})
-            return res.status(200).json({message:'Logged in successful',token:token,role })
+            return res.status(200).json({message:'Logged in successful',token:token,role,userId })
                 
            }else{
             return res.status(400).json({message:'Invalid Log in'})
@@ -101,10 +102,10 @@ const updateUser=async(req,res)=>{
         const {userId}=req.params 
         const {userName,userEmail,userPhone,userPassword,profilePic}=req.body
         
-        const {error}=userUpdateValidator.validate(req.body)
-        if(error){
-            return res.status(422).json(error.details[0].message)
-        }
+        // const {error}=userUpdateValidator.validate(req.body)
+        // if(error){
+        //     return res.status(422).json(error.details[0].message)
+        // }
         
         const salt = await bcrypt.genSalt(10)
         const hashedPassword=await bcrypt.hash(userPassword, salt)
@@ -164,7 +165,7 @@ const viewAssignedProject=async(req,res)=>{
     try {
         const {userId}=req.params 
      const pool=await mssql.connect(sqlConfig)
-        const result=(await pool.request().input('userId',userId).execute('viewAssignedProjectProc')).recordset[0] 
+        const result=(await pool.request().execute('viewAssignedProjectProc')).recordset[0] 
         if(result){
 return res.status(200).json({message:'Here is your project',result})
         }
