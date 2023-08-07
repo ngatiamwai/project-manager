@@ -1,16 +1,11 @@
 
-
-
-
-
-
-
 ///////
     const loginPassword=document.querySelector('.loginPassword')
     const loginuserName=document.querySelector('.loginuserName')
     const loginForm=document.getElementById('loginForm')
 
     let token=''
+    let userId=''
 
     loginForm.addEventListener('submit', (e)=>{
          e.preventDefault()
@@ -35,6 +30,10 @@
               ).then((res)=>{
                 console.log(res.data)
                 //alert(res.data.message)
+
+                userId=res.data.userId
+                
+                localStorage.setItem('userId',userId)
                 token=res.data.token
                 localStorage.setItem('token',token)
                 if(res.data.role=='admin'){
