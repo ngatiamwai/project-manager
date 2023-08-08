@@ -32,8 +32,7 @@
                 //alert(res.data.message)
 
                 userId=res.data.userId
-                
-                localStorage.setItem('userId',userId)
+                localStorage.setItem('id',userId)
                 token=res.data.token
                 localStorage.setItem('token',token)
                 if(res.data.role=='admin'){
