@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Project Manager: Your Projects</title>
 </head>
@@ -20,12 +21,22 @@
             <hr>
         </div>
         <div class="content">
+
+            <div class="hamburger">
+                <div class="hamburger-icon" onclick="toggleMenu()">&#9776;</div>
+            </div>
+        
+            <div class="hamburger-menu">
+                <p onclick="viewProjects()">Your Projects</p>
+                <p onclick="editProfile()">Edit Profile</p>
+                
+            </div>
             <section class="sect">
                 <div class="userFeatures">
                     <p onclick="viewProjects()" style="cursor: pointer; color: rgba(88, 53, 146, 1);">Your Projects</p>
                     <p onclick="editProfile()" style="cursor: pointer; color: rgba(88, 53, 146, 1);">Edit Profile</p>
                 </div>
-            </section>
+            </section>            
             <div class="content2">
                 <div id="projectsSection">
                     <h2>Your Projects</h2>
@@ -41,8 +52,7 @@
                                 </p>
                             </div>
                             <div class="actualContentBody3">
-                                <p class="complete"><img src="./Images/icons8-email-30.png" alt=""
-                                        style="height: 3vh; width: 3vh; display: grid; gap: 2vh;">COMPLETE</p>
+                                <p class="complete">COMPLETE</p>
                             </div>
                         </div>
                         <div class="actualContentBody">
@@ -175,39 +185,39 @@
                 <div class="content2">
                 <div id="profileSection" style="display: none;">
                     <h2>Edit Profile</h2>
-                    <form action="" style="margin-top: 5vh;">
+                    <form action="" style="margin-top: 5vh;"class="updateForm">
                         <div class="name">
                             <p>Name:</p>
-                            <input type="text" placeholder="Name" style="height: 7vh; width: 30vw;">
+                            <input type="text"  class="updateUsername" placeholder="Name" style="height: 7vh; width: 30vw;">
                         </div>
                         <div class="email">
                             <p>Email:</p>
-                            <input type="text" placeholder="Email" style="height: 7vh; width: 30vw;">
+                            <input type="text" class="updateEmail" placeholder="Email" style="height: 7vh; width: 30vw;">
                         </div>
                         <div class="phoneNumber">
                             <p>Phone Number:</p>
-                            <input type="text" placeholder="Phone Number" style="height: 7vh; width: 30vw;">
+                            <input type="text" class="updatePhone" placeholder="Phone Number" style="height: 7vh; width: 30vw;">
                         </div>
                         <div class="password">
                             <p>Change Password:</p>
-                            <input type="password" placeholder="Password" style="height: 7vh; width: 30vw;">
+                            <input type="password" class="updatePassword" placeholder="Password" style="height: 7vh; width: 30vw;">
                         </div>
+                        <button type="submit">submit</button>
                     </form>
                 </div>
             </div>
         </div>
 
     </div>
-
     <script>
-        function viewProjects() {
-            document.getElementById("projectsSection").style.display = "block";
-            document.getElementById("profileSection").style.display = "none";
+        function toggleMenu() {
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            hamburgerMenu.classList.toggle('show-menu');
         }
-        function editProfile() {
-            document.getElementById("projectsSection").style.display = "none";
-            document.getElementById("profileSection").style.display = "block";
-        }
+    </script>
+
+    <script src="main.js">
+        
     </script>
 </body>
 

@@ -17,5 +17,6 @@ END
 CATCH 
  select * from userTable
 
-
+DROP TABLE userTable 
+DROP TABLE projectTable
 

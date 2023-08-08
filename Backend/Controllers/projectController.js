@@ -117,6 +117,7 @@ const deleteProject= async(req,res)=>{
     }
 }
 const allCompletedProjects = async(req,res)=>{
+
     try {
         const pool = await (mssql.connect(sqlConfig))
         const result = (await pool.request()
@@ -134,7 +135,7 @@ const unassignedProjects = async(req, res)=>{
         const projectId = req.params.projectId
         const pool = await (mssql.connect(sqlConfig))
         const result = (await pool.request()
-            .execute('unassignedProjectsProc')).recordset
+            .execute('unassignedProjectsProc')).recordsets
         return res.json({projects: result})    
     } catch (error) {
         return res.json({error})
