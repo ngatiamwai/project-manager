@@ -21,12 +21,22 @@
             <hr>
         </div>
         <div class="content">
+
+            <div class="hamburger">
+                <div class="hamburger-icon" onclick="toggleMenu()">&#9776;</div>
+            </div>
+        
+            <div class="hamburger-menu">
+                <p onclick="viewProjects()">Your Projects</p>
+                <p onclick="editProfile()">Edit Profile</p>
+                
+            </div>
             <section class="sect">
                 <div class="userFeatures">
                     <p onclick="viewProjects()" style="cursor: pointer; color: rgba(88, 53, 146, 1);">Your Projects</p>
                     <p onclick="editProfile()" style="cursor: pointer; color: rgba(88, 53, 146, 1);">Edit Profile</p>
                 </div>
-            </section>
+            </section>            
             <div class="content2">
                 <div id="projectsSection">
                     <h2>Your Projects</h2>
@@ -42,8 +52,7 @@
                                 </p>
                             </div>
                             <div class="actualContentBody3">
-                                <p class="complete"><img src="./Images/icons8-email-30.png" alt=""
-                                        style="height: 3vh; width: 3vh; display: grid; gap: 2vh;">COMPLETE</p>
+                                <p class="complete">COMPLETE</p>
                             </div>
                         </div>
                         <div class="actualContentBody">
@@ -200,6 +209,12 @@
         </div>
 
     </div>
+    <script>
+        function toggleMenu() {
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            hamburgerMenu.classList.toggle('show-menu');
+        }
+    </script>
 
     <script src="main.js">
         
