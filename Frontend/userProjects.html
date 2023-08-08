@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Project Manager: Your Projects</title>
 </head>
@@ -175,23 +176,24 @@
                 <div class="content2">
                 <div id="profileSection" style="display: none;">
                     <h2>Edit Profile</h2>
-                    <form action="" style="margin-top: 5vh;">
+                    <form action="" style="margin-top: 5vh;"class="updateForm">
                         <div class="name">
                             <p>Name:</p>
-                            <input type="text" placeholder="Name" style="height: 7vh; width: 30vw;">
+                            <input type="text"  class="updateUsername" placeholder="Name" style="height: 7vh; width: 30vw;">
                         </div>
                         <div class="email">
                             <p>Email:</p>
-                            <input type="text" placeholder="Email" style="height: 7vh; width: 30vw;">
+                            <input type="text" class="updateEmail" placeholder="Email" style="height: 7vh; width: 30vw;">
                         </div>
                         <div class="phoneNumber">
                             <p>Phone Number:</p>
-                            <input type="text" placeholder="Phone Number" style="height: 7vh; width: 30vw;">
+                            <input type="text" class="updatePhone" placeholder="Phone Number" style="height: 7vh; width: 30vw;">
                         </div>
                         <div class="password">
                             <p>Change Password:</p>
-                            <input type="password" placeholder="Password" style="height: 7vh; width: 30vw;">
+                            <input type="password" class="updatePassword" placeholder="Password" style="height: 7vh; width: 30vw;">
                         </div>
+                        <button type="submit">submit</button>
                     </form>
                 </div>
             </div>
@@ -199,15 +201,8 @@
 
     </div>
 
-    <script>
-        function viewProjects() {
-            document.getElementById("projectsSection").style.display = "block";
-            document.getElementById("profileSection").style.display = "none";
-        }
-        function editProfile() {
-            document.getElementById("projectsSection").style.display = "none";
-            document.getElementById("profileSection").style.display = "block";
-        }
+    <script src="main.js">
+        
     </script>
 </body>
 
