@@ -10,7 +10,6 @@ try {
     createProjectsTable()
     const projectId = v4()
     const {projectName,projectDescription,endDate} = req.body
-console.log(req.body)
     const pool = await mssql.connect(sqlConfig)
     if(pool.connected){
         const result = await pool.request()
@@ -122,8 +121,6 @@ const allCompletedProjects = async(req,res)=>{
         const pool = await (mssql.connect(sqlConfig))
         const result = (await pool.request()
         .execute('allCompletedProjects')).recordset
-        // console.log(result);
-        // result = result[0]
         return res.json({completedProjects: result})
     } catch (error) {
         return res.json({error})

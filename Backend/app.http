@@ -14,10 +14,10 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZTBjMmJmZC01YjQ0LTQ0N
 GET http://localhost:5000/project
 
 ###GET ONE PROJECT
-GET http://localhost:5000/project/381246da-c1a1-4d98-8b11-b9ae45127bea
+GET http://localhost:5000/project/9360d6e6-4cf7-42f2-9661-955cbf8de345
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/381246da-c1a1-4d98-8b11-b9ae45127bea
+PUT  http://localhost:5000/project/9360d6e6-4cf7-42f2-9661-955cbf8de345
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/0981945b-431d-4793-8bc7-89bac0545898
+DELETE http://localhost:5000/project/9360d6e6-4cf7-42f2-9661-955cbf8de345
 
 
 
@@ -113,4 +113,3 @@ GET http://localhost:5000/project/completed/projects
 GET http://localhost:5000/user/check/token
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJzZWxlc3RlcmF0QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjU5NDU5MDUiLCJwcm9maWxlUGljIjpudWxsLCJyb2xlIjoidXNlciIsImlhdCI6MTY5MTQxMjg3NywiZXhwIjoxNjkxNzcyODc3fQ.5JDy_59rqIUPkjm2xf4X7QsVR4a_PPPbICnvnDWriGA
 
- 
