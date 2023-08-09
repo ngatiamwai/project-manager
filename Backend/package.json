@@ -4,7 +4,7 @@
   "description": "A contribution to the group project for a project management project\r This project is being carried out by David Munyiri, Calvince chacha and Ngatia Mwai",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watch",
     "start": "nodemon server.js"
   },
   "repository": {
@@ -27,5 +27,9 @@
     "mssql": "^9.1.2",
     "nodemon": "^3.0.1",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.10",
+    "jest": "^29.6.2"
   }
 }
