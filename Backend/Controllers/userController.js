@@ -159,7 +159,7 @@ const viewAssignedProject=async(req,res)=>{
     try {
         const {userId}=req.params 
      const pool=await mssql.connect(sqlConfig)
-        const result=(await pool.request().execute('viewAssignedProjectProc')).recordset[0] 
+        const result=(await pool.request().input('userId',userId).execute('viewAssignedProjectProc')).recordset[0] 
         if(result){
 return res.status(200).json({message:'Here is your project',result})
         }
