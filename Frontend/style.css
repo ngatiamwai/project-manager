@@ -303,13 +303,42 @@ hr{
     height: 10vh;
 }
 
+/* Styling for the hamburger icon */
+.hamburger-icon {
+    cursor: pointer;
+    display: none;
+}
+
+/* Styling for the hamburger menu */
+.hamburger-menu {
+    display: none; /* Initially hide the menu */
+    background-color: #fff;
+    position: absolute;
+    top: 90px;
+    z-index: 999;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: rgba(88, 53, 146, 0.87);
+}
+.hamburger-menu p{
+    margin-top: 5vh;
+    border-bottom: 1px solid rgba(88, 53, 146, 0.87);
+}
+
+/* Show the menu when the show-menu class is added */
+.show-menu {
+    display: block;
+}
 
 @media screen and (max-width: 800px ), (max-width: 500px){
     *{
         overflow: hidden;
+        margin: 0;
     }
     body{
         margin: 0;
+        font-size: 10px;
     }
     .main{
         display: block;
@@ -329,5 +358,26 @@ hr{
     .heading{
         margin-top: 10vh;
     }
+    .content2{
+        margin: 0vh;
+    }
+    .master{
+        margin: 2vh;
+    }
+    .sect {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+    .hamburger-icon {
+        cursor: pointer;
+        display: block;
+    }
     
-}
+    .userFeatures {
+        display: none;
+    }
+
+    }
