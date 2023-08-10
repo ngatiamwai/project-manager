@@ -202,10 +202,10 @@ const userCompleteProject = async(req,res)=>{
         .execute('completeProject'))
         
         if(result.rowsAffected==1){  
-            return res.json({
-                message: "Project marked as completed",result})}
+            return res.status(200).json({
+                message: "Project marked as completed"})}
         else{
-                return res.json({message: "Update failed, kindly ensure you have input the correct credentials"})
+                return res.status(400).json({message: "Update failed, kindly ensure you have input the correct credentials"})
             }
 
 
@@ -215,9 +215,9 @@ const userCompleteProject = async(req,res)=>{
 }
 const checkUser = async(req,res)=>{
     if(req.info){
-        res.json({
+        res.status(200).json({
             userName: req.info.userName,
-        userEmail: req.info.userEmail,
+            userEmail: req.info.userEmail,
             userPhone: req.info.userPhone,
             profilePic: req.info.profilePic,
             role: req.info.role
