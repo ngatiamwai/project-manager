@@ -155,14 +155,15 @@ return res.json({Error:error})
     }
 }
 
-//VIEW ASSIGNED PROJECT
+//USER VIEW ASSIGNED PROJECT
 const viewAssignedProject=async(req,res)=>{
     try {
         const {userId}=req.params 
-     const pool=await mssql.connect(sqlConfig)
+
+        const pool=await mssql.connect(sqlConfig)
         const result=(await pool.request().input('userId',userId).execute('viewAssignedProjectProc')).recordset[0] 
         if(result){
-return res.status(200).json({message:'Here is your project',result})
+            return res.status(200).json({message:'Here is your project',result})
         }
         else{
            return res.status(400).json({message:'Project not found'})
@@ -178,10 +179,12 @@ const viewAllAssignedProjects=async(req,res)=>{
     try {
         
         const {assigned}=req.params
-        const pool=await (mssql.connect(sqlConfig))
+        const pool=await mssql.connect(sqlConfig)
         
-        const projectsAssigned=(await pool.request().input('assigned',assigned).execute('viewAllAssignedProjectsProc')).recordsets
-        res.json({projects:projectsAssigned})
+        const projectsAssigned=(await pool.request().input('assigned',assigned).execute('viewAllAssignedProjectsProc')).recordset
+
+        return res.json({projects:projectsAssigned})
+        
     } catch (error) {
         return res.json({Error:error})
     }
