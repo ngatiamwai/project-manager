@@ -47,31 +47,30 @@ signupForm.addEventListener("submit", (e) => {
   }
 });
 
-
 function viewProjects() {
     document.getElementById("projectsSection").style.display = "block";
     document.getElementById("profileSection").style.display = "none";
 
-    let userId=localStorage.getItem('id')
-    console.log(userId)
+    let token=localStorage.getItem('token')
+    let id=localStorage.getItem('userId')
     const actualContent=document.querySelector('.actualContent')
     
     
     axios
       .get(
-        `http://localhost:5000/user/${userId}`,
+        `http://localhost:5000/user/${id}`,
 
         {
           headers: {
             "Accept": "application/json",
             "Content-type": "application/json",
-            "token":localStorage.getItem('token'),
+            "token":`${token}`
           },
         }
       )
       .then((response) => {
        const project=response.data.result
-       console.log(project.projectName,project.startDate)
+       //console.log(project.projectName,project.startDate)
        let myProject=document.createElement('div')
        let html=''
        html+=`
@@ -116,8 +115,8 @@ function viewProjects() {
       .catch((e) => {
         console.log(e);
       });
-    }
 
+}
 
 
 
@@ -125,6 +124,9 @@ function viewProjects() {
 function editProfile() {
     document.getElementById("projectsSection").style.display = "none";
     document.getElementById("profileSection").style.display = "block";
+
+    let id=localStorage.getItem('userId')
+    let token=localStorage.getItem('token')
 
     const updateForm=document.querySelector('.updateForm')
     const updateUsername = document.querySelector(".updateUsername");
@@ -140,7 +142,7 @@ updateForm.addEventListener("submit", (e) => {
   
     axios
       .put(
-        `http://localhost:5000/user/update/${userId}`,
+        `http://localhost:5000/user/update/${id}`,
 
         {
           userName: updateUsername.value,
@@ -151,9 +153,9 @@ updateForm.addEventListener("submit", (e) => {
 
         {
           headers: {
-            Accept: "application/json",
+            "Accept": "application/json",
             "Content-type": "application/json",
-            "token":localStorage.getItem('token'),
+            "token":`${token}`,
           },
         }
       )

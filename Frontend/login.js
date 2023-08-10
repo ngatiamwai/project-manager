@@ -30,7 +30,8 @@
               ).then((res)=>{
                 console.log(res.data)
                 //alert(res.data.message)
-
+                userName=res.data.userName  
+                localStorage.setItem('userName',userName) 
                 userId=res.data.userId
                 localStorage.setItem('id',userId)
                 token=res.data.token

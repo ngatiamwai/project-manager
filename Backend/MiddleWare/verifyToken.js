@@ -3,9 +3,9 @@ const dotenv=require('dotenv')
 
 dotenv.config()
 
-const tokenVerfying=async(req,res,next)=>{
+module.exports.tokenVerfying = async(req,res,next)=>{
     try {
-        const token=req.headers['token']
+        const token = req.headers['token']
         if(!token){
             return res.status(401).json({message:'You are not allowed to be seeing This, provide a token'})
         }
@@ -13,11 +13,11 @@ const tokenVerfying=async(req,res,next)=>{
         req.info = decodedData
         
     } catch (error) {
-        res.json({Error:error})
+        res.json({Error: error.message})
     }
     next()
 }
 
-module.exports={
-tokenVerfying
-}
+// module.exports={
+// tokenVerfying
+// }
