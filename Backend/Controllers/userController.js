@@ -15,7 +15,7 @@ const registerUser=async(req,res)=>{
         createTableUser()
         const userId=v4()
 
-        const {userName,userPhone,userEmail,userPassword,role}=req.body
+        const {userName,userPhone,userEmail,userPassword}=req.body
 
         const {error}=userRegisterValidator.validate(req.body)
         if(error){
@@ -32,7 +32,6 @@ const registerUser=async(req,res)=>{
             .input('userName',userName)
             .input('userEmail',userEmail)
             .input('userPhone',userPhone)
-            .input('role',role)
             .input('userPassword',hashedPassword)
             .execute('registerUserProc'))
             if(result.rowsAffected[0]==1){

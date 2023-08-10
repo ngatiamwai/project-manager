@@ -14,21 +14,21 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZTBjMmJmZC01YjQ0LTQ0N
 GET http://localhost:5000/project
 
 ###GET ONE PROJECT
-GET http://localhost:5000/project/9360d6e6-4cf7-42f2-9661-955cbf8de345
+GET http://localhost:5000/project/077f9c00-33e3-4e31-8da7-491e8ecf5b1f
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/9360d6e6-4cf7-42f2-9661-955cbf8de345
+PUT  http://localhost:5000/project/077f9c00-33e3-4e31-8da7-491e8ecf5b1f
 Content-Type: application/json
 
 {
     "projectName": "Eat food",
     "projectDescription": "enough food",
-    "startDate": "2021/04/04",
+    "startDate": "2021/0404",
     "endDate": "2030/04/04"
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/9360d6e6-4cf7-42f2-9661-955cbf8de345
+DELETE http://localhost:5000/project/0d4ab846-dc51-411f-9135-1f964a486983
 
 
 
@@ -37,11 +37,10 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-    "userName":"Ngatia Mwai",
-    "userEmail":"ngatiamwai25@gmail.com",
-    "userPhone":"07097854661",
-    "userPassword":"12345678",
-    "role":"admin"
+    "userName":"Ngatia wai",
+    "userEmail":"ngatiamwai11@gmail.com",
+    "userPhone":"0709785466",
+    "userPassword":"12345678"
 }
 ###ALL USERS
 GET http://localhost:5000/user/all/users
@@ -58,7 +57,7 @@ Content-Type: application/json
 ###USER DETAIL UPDATE
 PUT http://localhost:5000/user/update/ce19741c-758a-4b15-b6cb-d5d42e14b2cc
 Content-Type: application/json 
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiM2ZjNWE1YS1hYjE2LTQwZGYtOTYyNy02M2JjYjBhMmNjZmIiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJmYWl0aEBnbWFpbC5jb20iLCJ1c2VyUGhvbmUiOiIwNzA5Nzg1NDY1OSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDAwNjM5LCJleHAiOjE2OTE3NjA2Mzl9.GBZo1EEi2bZfFG9XzPQlYJ7_vlWVHMgYQeNYGdcQZG8
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxNDkxMzM3LCJleHAiOjE2OTE4NTEzMzd9.7kZOJglMMifofjjR7kTkXyxpZz2caFHS2VlZhII_Pjg
 
 {
     "userName":"jese faith",
@@ -78,8 +77,8 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxOTU1NWYzOS0yMTk3LTQ2M
 } 
 
 ###USER TO VIEW ASSIGNED PROJECT 
-GET http://localhost:5000/user/19555f39-2197-4626-ab4d-7367b58ea4b7
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxOTU1NWYzOS0yMTk3LTQ2MjYtYWI0ZC03MzY3YjU4ZWE0YjciLCJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDE3MTIxMzEiLCJwcm9maWxlUGljIjpudWxsLCJpYXQiOjE2OTE0Mjc0MjAsImV4cCI6MTY5MTc4NzQyMH0.R380B5whU7rmjiSUisvwIj0AGnNNthz1Shkhl3f9-rw
+GET http://localhost:5000/user/ed2e6eba-8bdf-4e4f-8ac6-03dfa5ca4bd5
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxNDkxMzM3LCJleHAiOjE2OTE4NTEzMzd9.7kZOJglMMifofjjR7kTkXyxpZz2caFHS2VlZhII_Pjg
 
 
 
