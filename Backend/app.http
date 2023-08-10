@@ -56,15 +56,15 @@ Content-Type: application/json
 }
 
 ###USER DETAIL UPDATE
-PUT http://localhost:5000/user/update/ce19741c-758a-4b15-b6cb-d5d42e14b2cc
+PUT http://localhost:5000/user/update/19555f39-2197-4626-ab4d-7367b58ea4b7
 Content-Type: application/json 
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJiM2ZjNWE1YS1hYjE2LTQwZGYtOTYyNy02M2JjYjBhMmNjZmIiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJmYWl0aEBnbWFpbC5jb20iLCJ1c2VyUGhvbmUiOiIwNzA5Nzg1NDY1OSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDAwNjM5LCJleHAiOjE2OTE3NjA2Mzl9.GBZo1EEi2bZfFG9XzPQlYJ7_vlWVHMgYQeNYGdcQZG8
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxNjQxODMwLCJleHAiOjE2OTIwMDE4MzB9.60s5EYhH55zxO9RjyDd5B6q2X2ih-3ClZdYVxtPkfHo
 
 {
-    "userName":"jese faith",
-    "userEmail":"selesterat@gmail.com",
-    "userPhone": "5945905",
-    "userPassword":"12345655"
+    "userName":"David Munyiri",
+    "userEmail":"davidmumyiri2019@gmail.com",
+    "userPhone": "076325432",
+    "userPassword":"12345678"
 } 
 
 ###ASSIGN PROJECT

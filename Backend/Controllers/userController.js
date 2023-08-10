@@ -104,11 +104,11 @@ const updateUser=async(req,res)=>{
         //     return res.status(422).json(error.details[0].message)
         // }
         
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword=await bcrypt.hash(userPassword, salt)
+        
+        const hashedPassword=await bcrypt.hash(userPassword, 10)
         
         const pool =await  mssql.connect(sqlConfig)
-        if(pool.connected){
+        
             const result=(await pool.request()
             .input('userId',userId)
             .input('userName',userName)
@@ -118,12 +118,12 @@ const updateUser=async(req,res)=>{
             .input('profilePic',profilePic)
            .execute('userUpdateProc'))
 
-           if(result.rowsAffected[0]==1){
-            return res.json({message: "Details updated succsessfully"})
+           if(result.rowsAffected ==1 ){
+            return res.status(200).json({message: "Details updated succsessfully"})
            }else{
-            return res.json({error: "Details not  updated"})
+            return res.status(400).json({message: "Details not  updated"})
            }
-        }
+        
         
     } catch (error) {
         return res.json({Error:error})
