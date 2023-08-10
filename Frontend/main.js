@@ -63,7 +63,7 @@ function viewProjects() {
 
         {
           headers: {
-            Accept: "application/json",
+            "Accept": "application/json",
             "Content-type": "application/json",
             "token":localStorage.getItem('token'),
           },
