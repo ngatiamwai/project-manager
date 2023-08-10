@@ -6,44 +6,45 @@ const { createProjectsTable, createTableUser } = require('../Database/Tables/cre
 
 const createProject = async(req,res)=>{
 try {
-    createTableUser()
-    createProjectsTable()
+    // createTableUser()
+    // createProjectsTable()
     const projectId = v4()
     const {projectName,projectDescription,endDate} = req.body
-
     const pool = await mssql.connect(sqlConfig)
-    if(pool.connected){
+    
         const result = await pool.request()
         .input('projectId', mssql.VarChar, projectId)
         .input('projectName', mssql.VarChar, projectName)
         .input('projectDescription', mssql.VarChar, projectDescription)
         .input('endDate', mssql.Date, endDate)
-        
         .execute('addProjectPROC')
+
+        // console.log(result.rowsAffected);
          if(result.rowsAffected[0]==1){  
-         return res.json({
+         return res.status(200).json({
              message: "Project created Succesfully",
          })}
          else{
-             return res.json({message: "Creation failed"})
+             return res.status(400).json({message: "Creation failed"})
          }
  
-     }else{
-        return res.json({message: "database not connected"})
-     }
+     
     
 } catch (error) {
     createProjectsTable()
-    return res.json({error: "Wrong date details"})
+    return res.status(400).json({error: "Kindly input the correct date format and details"})
 }   }
 
 const viewallprojects = async(req, res)=>{
     try {
-        const pool = await (mssql.connect(sqlConfig))
-        const projects = (await pool.request().execute('getAllProjects')).recordset 
-        res.json({projects: projects})
+        const pool = await mssql.connect(sqlConfig)
+        const projects = (await pool.request().execute('getAllProjects')).recordset
+        console.log(projects);
+        return res.status(200).json({projects: projects})
+
+        
     } catch (error) {
-        return res.json({error})
+        return res.status(500).json({error: error, user_message:"There is a problem with our server, maintanance team will get to that soon"})
     }
 }
 
@@ -54,7 +55,8 @@ const getOneProject = async(req, res)=>{
         const result = (await pool.request()
             .input('projectId', projectId)
             .execute('getOneProject')).recordset
-        return res.json({project: result})    
+
+        return res.status(200).json({project: result})    
     } catch (error) {
         return res.json({error})
     }
@@ -68,7 +70,7 @@ const updateProject = async(req,res)=>{
         const {projectName,projectDescription,startDate,endDate} = req.body
 
         const pool = await mssql.connect(sqlConfig)
-        if(pool.connected){
+        
             const result = await pool.request()
             .input('projectId', mssql.VarChar, projectId)
             .input('projectName', mssql.VarChar, projectName)
@@ -77,18 +79,16 @@ const updateProject = async(req,res)=>{
             .input('endDate', mssql.Date, endDate)
             .execute('updateProject')
 
-            
+            console.log(result.rowsAffected);            
              if(result.rowsAffected==1){  
-             return res.json({
+             return res.status(200).json({
                  message: "Project updated Succesfully",
              })}
              else{
-                 return res.json({message: "Update failed"})
+                 return res.status(400).json({message: "Update failed"})
              }
-        }else{
-            return res.json({message: "database not connected"})
-        }
-    } catch (error) {
+        
+    } catch (error) { 
         return res.json({error})
     }
 }
@@ -104,12 +104,12 @@ const deleteProject= async(req,res)=>{
         .execute('deleteProject')
 
         if (result.rowsAffected==1){
-            return res.json({
+            return res.status(200).json({
                 message: 'deleted successfully'
             })
         }
         else{
-            return res.json({
+            return res.status(400).json({
                 message: 'Project not found'
             })
         } 
@@ -123,8 +123,9 @@ const allCompletedProjects = async(req,res)=>{
         const pool = await (mssql.connect(sqlConfig))
         const result = (await pool.request()
         .execute('allCompletedProjects')).recordset
-        
+
         return res.json({completedProjects: result})
+
     } catch (error) {
         return res.json({error})
     }
@@ -134,13 +135,15 @@ const allCompletedProjects = async(req,res)=>{
 
 const unassignedProjects = async(req, res)=>{
     try {
-        const projectId = req.params.projectId
         const pool = await (mssql.connect(sqlConfig))
         const result = (await pool.request()
-            .execute('unassignedProjectsProc')).recordsets
-        return res.json({projects: result})    
+            .execute('unassignedProjectsProc')).recordset
+
+        return res.status(200).json({projects: result}) 
+        
+        
     } catch (error) {
-        return res.json({error})
+        return res.status(400).json({error})
     }
     
     

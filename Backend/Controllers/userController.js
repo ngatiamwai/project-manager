@@ -16,7 +16,10 @@ const registerUser=async(req,res)=>{
     try {
         createTableUser()
         const userId=v4()
-        const {userName,userPhone,userEmail,userPassword,role}=req.body
+
+
+        const {userName,userPhone,userEmail,userPassword}=req.body
+
         const {error}=userRegisterValidator.validate(req.body)
         if(error){
             return res.status(422).json(error.details[0].message)
@@ -30,7 +33,6 @@ const registerUser=async(req,res)=>{
             .input('userName',userName)
             .input('userEmail',userEmail)
             .input('userPhone',userPhone)
-            .input('role',role)
             .input('userPassword',hashedPassword)
             .execute('registerUserProc'))
             if(result.rowsAffected[0]==1){
