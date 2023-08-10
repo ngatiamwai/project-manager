@@ -1,7 +1,7 @@
 import mssql from "mssql";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { allusers, checkUser, registerUser, updateUser, userCompleteProject } from "./userController";
+import { allusers, checkUser, registerUser, updateUser, userCompleteProject, viewAllAssignedProjects, viewAssignedProject } from "./userController";
 
 const res = {
   status: jest.fn().mockReturnThis(),
@@ -97,6 +97,7 @@ expect(res.json).toHaveBeenCalledWith({message:"Here is the list of users",users
     })
     
   })
+
   ///TEST FOR USER DETAILS UPDATE
   describe("Test if users details are updated succesful",()=>{
     it("Should update User Details succesfully",async()=>{
@@ -162,10 +163,140 @@ expect(res.json).toHaveBeenCalledWith({message:"Here is the list of users",users
 
 
   })///test for user details update ends here
+
   describe("Test User Login",()=>{
     it("Should Enable a user to Login",async()=>{
 
     })
+  })
+
+
+  describe('User view all assigned projects',()=>{
+    const req = {
+      params: {userId: 'papapa'}
+    }
+    const expectedres = {
+      message: "Here is your project",
+      result: {
+        projectId: "381246da-c1a1-4d98-8b11-b9ae45127bea",
+        projectName: "Eat food",
+        projectDescription: "enough food",
+        startDate: "2021-04-03",
+        endDate: "2030-04-03",
+        status: false,
+        assignedTo: "ed2e6eba-8bdf-4e4f-8ac6-03dfa5ca4bd5",
+        assigned: true,
+        userAssignedEmailed: true,
+        emailAdminCompleted: false
+      }
+    }
+
+    it('should return all projects if the user is asigned the project', async()=>{
+      const mockedInput = jest.fn().mockReturnThis()
+      const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1],
+      recordset: [expectedres.result]})
+
+      const mockedRequest ={
+          input: mockedInput,
+          execute: mockedExecute
+      }
+      const mockedPool ={
+          request: jest.fn().mockReturnValue(mockedRequest)
+      }
+      jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool)
+
+      await viewAssignedProject(req, res)
+      expect(mockedInput).toHaveBeenCalledWith('userId',req.params.userId);
+      expect(mockedExecute).toHaveBeenCalledWith('viewAssignedProjectProc');
+
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith(
+          expectedres
+      )      
+
+    })
+
+    it('should return the error if the user has not been asigned any project', async()=>{
+      const res2 = {
+        message:'Project not found'
+      }
+      const mockedInput = jest.fn().mockReturnThis()
+      const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [0],
+      recordset: []})
+
+      const mockedRequest ={
+          input: mockedInput,
+          execute: mockedExecute
+      }
+      const mockedPool ={
+          request: jest.fn().mockReturnValue(mockedRequest)
+      }
+      jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool)
+
+      await viewAssignedProject(req, res)
+      expect(mockedInput).toHaveBeenCalledWith('userId',req.params.userId);
+      expect(mockedExecute).toHaveBeenCalledWith('viewAssignedProjectProc');
+
+      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.json).toHaveBeenCalledWith(
+          res2
+      ) 
+    })
+
+  })
+
+  describe("view all asigned projects", ()=>{
+    const req = {
+      params: {assigned: 0}
+    }
+    const sampleProjects = [
+      {
+        projectId: "077f9c00-33e3-4e31-8da7-491e8ecf5b1f",
+        projectName: "Eat food",
+        projectDescription: "enough food",
+        startDate: "2021-04-03",
+        endDate: "2030-04-03",
+        status: false,
+        assignedTo: null,
+        assigned: false,
+        userAssignedEmailed: false,
+        emailAdminCompleted: false
+      },
+      {
+        projectId: "0b2ab4c8-0f63-46d9-9f39-123bca27da6e",
+        projectName: "Nairobi school",
+        projectDescription: "run on the runways",
+        startDate: "2023-08-08",
+        endDate: "2027-04-03",
+        status: false,
+        assignedTo: null,
+        assigned: false,
+        userAssignedEmailed: false,
+        emailAdminCompleted: false
+      }]
+
+      it('should generate all the asigned projects', async()=>{
+        const mockedInput = jest.fn().mockReturnThis()
+        const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1],
+        recordset: sampleProjects})
+
+        const mockedRequest ={
+            input: mockedInput,
+            execute: mockedExecute
+        }
+        const mockedPool ={
+            request: jest.fn().mockReturnValue(mockedRequest)
+        }
+        jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool)
+
+        await viewAllAssignedProjects(req, res)
+
+        expect(mockedInput).toHaveBeenCalledWith('assigned',req.params.assigned);
+        expect(mockedExecute).toHaveBeenCalledWith('viewAllAssignedProjectsProc');
+        expect(res.json).toHaveBeenCalledWith({
+          projects: sampleProjects
+      })
+      })
   })
 
   describe('user to complete a project successfully',()=>{
