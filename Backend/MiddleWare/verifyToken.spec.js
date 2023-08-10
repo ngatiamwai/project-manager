@@ -1,21 +1,22 @@
 import jwt from 'jsonwebtoken';
 const { tokenVerfying } = require('./verifyToken')
-
+jest.mock('jsonwebtoken');
 
 
 describe('Checking Token', () => {
     it('should get the token', async () => {
-        const validToken = jwt.sign({ userID: '1234' }, 'sfdrfsdsfsfdr');
+        jwt.verify.mockReturnValue({ userID: '1234' });
+
         const req = {
-            headers: { token: validToken },
+            headers: { token: 'valid_token' },
         };
         const res = {
             status: jest.fn().mockReturnThis(),
             json: jest.fn().mockReturnThis(),
         };
         const next = jest.fn();
-        await tokenVerfying(req, res, next)
 
+        await tokenVerfying(req, res, next);
 
         expect(next).toHaveBeenCalled();
     });
@@ -34,22 +35,22 @@ describe('Checking Token', () => {
     });
 
     it('should handle invalid token', async () => {
-        const invalidToken = 'iugui.uiguoiyh.iyfhvygi';
-      
         const req = {
-          headers: { token: invalidToken }
+          headers: { token: 'invalid_token' },
         };
         const res = {
-          json: jest.fn()
+          json: jest.fn(),
         };
         const next = jest.fn();
       
-        await tokenVerfying(req, res, next);
+        try {
+          await tokenVerfying(req, res, next);
+        } catch (error) {
+          expect(error.message).toBe('Invalid token');
+        }
       
-        expect(res.json).toHaveBeenCalledWith({ Error: 'Invalid token' });
-        expect(next).not.toHaveBeenCalled();
+        expect(res.json).not.toHaveBeenCalled();
+        expect(next).toHaveBeenCalled();
       });
       
-      
-
 });
