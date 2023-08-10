@@ -79,7 +79,7 @@ const updateProject = async(req,res)=>{
             .input('endDate', mssql.Date, endDate)
             .execute('updateProject')
 
-            console.log(result.rowsAffected);            
+            // console.log(result.rowsAffected);            
              if(result.rowsAffected==1){  
              return res.status(200).json({
                  message: "Project updated Succesfully",
