@@ -39,7 +39,7 @@ const viewallprojects = async(req, res)=>{
     try {
         const pool = await mssql.connect(sqlConfig)
         const projects = (await pool.request().execute('getAllProjects')).recordset
-        console.log(projects);
+        // console.log(projects);
         return res.status(200).json({projects: projects})
 
         
@@ -79,7 +79,7 @@ const updateProject = async(req,res)=>{
             .input('endDate', mssql.Date, endDate)
             .execute('updateProject')
 
-            console.log(result.rowsAffected);            
+            // console.log(result.rowsAffected);            
              if(result.rowsAffected==1){  
              return res.status(200).json({
                  message: "Project updated Succesfully",
