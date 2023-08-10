@@ -39,7 +39,7 @@ const viewallprojects = async(req, res)=>{
     try {
         const pool = await mssql.connect(sqlConfig)
         const projects = (await pool.request().execute('getAllProjects')).recordset
-        console.log(projects);
+        // console.log(projects);
         return res.status(200).json({projects: projects})
 
         
