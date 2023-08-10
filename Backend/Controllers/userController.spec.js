@@ -1,7 +1,7 @@
 import mssql from "mssql";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { allusers, registerUser, updateUser } from "./userController";
+import { allusers, checkUser, registerUser, updateUser, userCompleteProject } from "./userController";
 
 const res = {
   status: jest.fn().mockReturnThis(),
@@ -167,4 +167,80 @@ expect(res.json).toHaveBeenCalledWith({message:"Here is the list of users",users
 
     })
   })
+
+  describe('user to complete a project successfully',()=>{
+    const req = {
+      body: {projectId: "381246da-c1a1-4d98-8b11-b9ae45127bea"},
+      params: {
+        userId: "fegi"
+      }
+    }
+    
+    it("mark a certain project as completed", async()=>{
+      const mockedInput = jest.fn().mockReturnThis()
+
+      const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1]})
+
+      const mockedRequest ={
+          input: mockedInput,
+          execute: mockedExecute
+      }
+      const mockedPool ={
+        request: jest.fn().mockReturnValue(mockedRequest)
+      }
+      jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool)
+
+      await userCompleteProject(req,res)
+
+      expect(mockedInput).toHaveBeenCalledWith('userId', mssql.VarChar, req.params.userId);
+      expect(mockedInput).toHaveBeenCalledWith('projectId', mssql.VarChar, req.body.projectId);
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({
+          message: 'Project marked as completed'
+      })
+
+    })
+
+    it('ought to gennerate an error if marking as completed fails', async()=>{
+      const mockedInput = jest.fn().mockReturnThis()
+
+      const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [0]})
+
+      const mockedRequest ={
+          input: mockedInput,
+          execute: mockedExecute
+      }
+      const mockedPool ={
+        request: jest.fn().mockReturnValue(mockedRequest)
+      }
+      jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool)
+
+      await userCompleteProject(req,res)
+
+      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.json).toHaveBeenCalledWith({
+          message: 'Update failed, kindly ensure you have input the correct credentials'
+      })
+    })
+    
+  })
+
+
+  describe('Check user token',()=>{
+    it('should check the user token information', async()=>{
+      const req = {
+        info: {
+              userName: "jese faith",
+              userEmail: "selesterat@gmail.com",
+              userPhone: "5945905",
+              profilePic: null,
+              role: "user"
+        }
+      }
+      await checkUser(req,res)
+      expect(res.status).toHaveBeenCalledWith(200)
+      expect(res.json).toHaveBeenCalledWith(req.info)
+    })
+  })
+
 });

@@ -191,10 +191,10 @@ describe('Project Controller', ()=>{
         it("should generate an error if update has failed to happen", async()=>{
             const projectId = 'calvo'
             const newchangedProject = {
-                "projectName": "Eat food",
-                "projectDescription": "enough food",
-                "startDate": "2021/0404",
-                "endDate": "2030/04/04"
+                projectName: "Eat food",
+                projectDescription: "enough food",
+                startDate: "2021/0404",
+                endDate: "2030/04/04"
             } 
             const req = {
                 params:{
