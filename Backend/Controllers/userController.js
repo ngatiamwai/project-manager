@@ -38,9 +38,7 @@ const registerUser=async(req,res)=>{
             .execute('registerUserProc'))
             if (result.rowsAffected == 1){
                 return res.status(200).json({message:"User Registered Succesful"})
-
             }else{
-
                 return res.status(400).json({message:"Error Registering User"})
             }
          
