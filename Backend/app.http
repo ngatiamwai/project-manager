@@ -1,7 +1,7 @@
 ###PROJECT MANAGEMENT
 POST http://localhost:5000/project
 Content-Type: application/json
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyZTBjMmJmZC01YjQ0LTQ0NDYtYmMxYi1hNzM1NGNhZWE0YjMiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyBOZGVtbyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0IiwicHJvZmlsZVBpYyI6bnVsbCwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjkxMjI3MzQ0LCJleHAiOjE2OTE1ODczNDR9.IyhKTXefnPkp7FAQP2nESA8vIQuzvU7MyQzTwfEBmL8
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxODI1MzYxLCJleHAiOjE2OTIxODUzNjF9.cL0VvXNx7ANpEBfQgK6t1UqzqSks2OS32POGPpEISto
 
 
 {
@@ -21,15 +21,14 @@ PUT  http://localhost:5000/project/077f9c00-33e3-4e31-8da7-491e8ecf5b1f
 Content-Type: application/json
 
 {
-    "projectName": "Eat food",
-    "projectDescription": "enough food",
-    "startDate": "2021/0404",
-    "endDate": "2030/04/04"
+    "projectName": "read your novel",
+    "projectDescription": "just for fun",
+    "startDate": "2021/04/04",
+    "endDate": "2010/5/02"
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/0d4ab846-dc51-411f-9135-1f964a486983
-
+DELETE http://localhost:5000/project/077f9c00-33e3-4e31-8da7-491e8ecf5b1f
 
 
 ###REGISTER USER
@@ -37,9 +36,9 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-    "userName":" Mwai Ngatia",
-    "userEmail":"mwaingatia25@gmail.com",
-    "userPhone":"0903845351",
+    "userName":" Gloria mike",
+    "userEmail":"gjess3@gmail.com",
+    "userPhone":"0903845359",
     "userPassword":"12345678"
 
 }
@@ -51,14 +50,14 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"Ngatia Mwai",
+    "userName":"David Munyiri",
     "userPassword":"12345678"
 }
 
 ###USER DETAIL UPDATE
 PUT http://localhost:5000/user/update/19555f39-2197-4626-ab4d-7367b58ea4b7
 Content-Type: application/json 
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxNjQxODMwLCJleHAiOjE2OTIwMDE4MzB9.60s5EYhH55zxO9RjyDd5B6q2X2ih-3ClZdYVxtPkfHo
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxODI1MzYxLCJleHAiOjE2OTIxODUzNjF9.cL0VvXNx7ANpEBfQgK6t1UqzqSks2OS32POGPpEISto
 
 {
     "userName":"David Munyiri",

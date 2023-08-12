@@ -36,7 +36,8 @@ const registerUser=async(req,res)=>{
             .input('userPhone',userPhone)
             .input('userPassword',hashedPassword)
             .execute('registerUserProc'))
-            if (result.rowsAffected == 1){
+            console.log(result.rowsAffected);
+            if (result.rowsAffected[0] == 1){
                 return res.status(200).json({message:"User Registered Succesful"})
             }else{
                 return res.status(400).json({message:"Error Registering User"})
@@ -52,7 +53,7 @@ const allusers = async(req,res)=>{
 try {
     const pool=await mssql.connect(sqlConfig)
     const users = (await pool.request().execute('getAllUsersProc')).recordset
-    res.status(200).json({message:"Here is the list of users",users:allusers})
+    res.status(200).json({message:"Here is the list of users",users:users})
 } catch (error) {
     return res.json({error})
 }
@@ -61,7 +62,11 @@ try {
 //USER LOGIN Controller
 const loginUser=async(req,res)=>{
     try {
-        const {userName,userPassword,role,userId}=req.body 
+        const {userName,userPassword}=req.body 
+
+        if(!userName || !userPassword){
+            return res.status(400).json({error:"Kindly input your credentials"})
+        }
         const {error}=loginValidator.validate(req.body)
         if(error){
             return res.status(422).json(error.details[0].message)
@@ -77,7 +82,7 @@ const loginUser=async(req,res)=>{
         if(comparePassword){
             const {userPassword,role,userId,...payload}=user 
             const token=jwt.sign(payload, process.env.SECRET,{expiresIn:'360000s'})
-            return res.status(200).json({message:'Logged in successful',token:token,role,userId })
+            return res.status(200).json({message:'Logged in successful',token:token})
                 
            }else{
             return res.status(400).json({message:'Invalid Log in'})
@@ -115,7 +120,7 @@ const updateUser=async(req,res)=>{
             .input('userPassword',hashedPassword)
             .input('profilePic',profilePic)
            .execute('userUpdateProc'))
-
+           
            if(result.rowsAffected ==1 ){
             return res.status(200).json({message: "Details updated succsessfully"})
            }else{
