@@ -116,7 +116,7 @@ const updateUser=async(req,res)=>{
             .input('userPassword',hashedPassword)
             .input('profilePic',profilePic)
            .execute('userUpdateProc'))
-console.log(result.rowsAffected);
+           
            if(result.rowsAffected ==1 ){
             return res.status(200).json({message: "Details updated succsessfully"})
            }else{

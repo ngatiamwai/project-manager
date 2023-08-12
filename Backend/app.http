@@ -36,9 +36,9 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-    "userName":" Gloria ",
-    "userEmail":"gjess3e@gmail.ke",
-    "userPhone":"0903845353",
+    "userName":" Gloria mike",
+    "userEmail":"gjess3@gmail.com",
+    "userPhone":"0903845359",
     "userPassword":"12345678"
 
 }
