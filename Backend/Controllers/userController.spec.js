@@ -93,7 +93,7 @@ jest.spyOn(mssql,"connect").mockResolvedValueOnce({
 await allusers(req,res)
 
 expect(res.status).toHaveBeenCalledWith(200)
-expect(res.json).toHaveBeenCalledWith({message:"Here is the list of users",users:allusers})
+expect(res.json).toHaveBeenCalledWith({message:"Here is the list of users",users:mockUpusers})
     })
     
   })

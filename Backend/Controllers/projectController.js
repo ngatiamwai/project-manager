@@ -89,7 +89,7 @@ const updateProject = async(req,res)=>{
              }
         
     } catch (error) { 
-        return res.json({error})
+        return res.json({error: "Kindly input the correct date details"})
     }
 }
 
