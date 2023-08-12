@@ -36,7 +36,8 @@ const registerUser=async(req,res)=>{
             .input('userPhone',userPhone)
             .input('userPassword',hashedPassword)
             .execute('registerUserProc'))
-            if (result.rowsAffected == 1){
+            console.log(result.rowsAffected);
+            if (result.rowsAffected[0] == 1){
                 return res.status(200).json({message:"User Registered Succesful"})
             }else{
                 return res.status(400).json({message:"Error Registering User"})
@@ -52,7 +53,7 @@ const allusers = async(req,res)=>{
 try {
     const pool=await mssql.connect(sqlConfig)
     const users = (await pool.request().execute('getAllUsersProc')).recordset
-    res.status(200).json({message:"Here is the list of users",users:allusers})
+    res.status(200).json({message:"Here is the list of users",users:users})
 } catch (error) {
     return res.json({error})
 }
@@ -119,7 +120,7 @@ const updateUser=async(req,res)=>{
             .input('userPassword',hashedPassword)
             .input('profilePic',profilePic)
            .execute('userUpdateProc'))
-
+           
            if(result.rowsAffected ==1 ){
             return res.status(200).json({message: "Details updated succsessfully"})
            }else{

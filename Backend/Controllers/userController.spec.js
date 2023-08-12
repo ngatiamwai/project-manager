@@ -99,7 +99,7 @@ describe(" Tests For Users Controller", () => {
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith({
         message: "Here is the list of users",
-        users: allusers,
+        users: mockUpusers,
       });
     });
   });
