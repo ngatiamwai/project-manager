@@ -61,7 +61,11 @@ try {
 //USER LOGIN Controller
 const loginUser=async(req,res)=>{
     try {
-        const {userName,userPassword,role,userId}=req.body 
+        const {userName,userPassword}=req.body 
+
+        if(!userName || !userPassword){
+            return res.status(400).json({error:"Kindly input your credentials"})
+        }
         const {error}=loginValidator.validate(req.body)
         if(error){
             return res.status(422).json(error.details[0].message)
@@ -77,7 +81,7 @@ const loginUser=async(req,res)=>{
         if(comparePassword){
             const {userPassword,role,userId,...payload}=user 
             const token=jwt.sign(payload, process.env.SECRET,{expiresIn:'360000s'})
-            return res.status(200).json({message:'Logged in successful',token:token,role,userId })
+            return res.status(200).json({message:'Logged in successful',token:token})
                 
            }else{
             return res.status(400).json({message:'Invalid Log in'})

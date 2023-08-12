@@ -37,9 +37,9 @@ POST http://localhost:5000/user/register
 Content-Type: application/json 
 
 {
-    "userName":" Mwai Ngatia",
-    "userEmail":"mwaingatia25@gmail.com",
-    "userPhone":"0903845351",
+    "userName":"Mahubali",
+    "userEmail":"mahu@gmail.com",
+    "userPhone":"0903881",
     "userPassword":"12345678"
 
 }
@@ -51,7 +51,7 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"Ngatia Mwai",
+    "userName":"David Munyiri",
     "userPassword":"12345678"
 }
 
