@@ -14,7 +14,7 @@ const projectDescription=document.querySelector('.Description')
 const endDate=document.querySelector('.Date')
 
 createproject.addEventListener('submit', (e)=>{
-    // e.preventDefault()
+     e.preventDefault()
 
     let createdProject=projectTitle.value !=="" && projectDescription.value !=="" && endDate.value !==""
     if(createdProject){
@@ -36,7 +36,6 @@ createproject.addEventListener('submit', (e)=>{
               },
             }
           ).then((res)=>{
-            window.location.href=='./createProject.html'
             console.log(res.data)
             
           })
@@ -177,8 +176,8 @@ function unassignedProjects() {
                     </p>
                 </div>
                 <div class="actualContentBody3">
-                    <select class="assign" id="assign" >
-                    
+                    <select class="assign" id="">
+                        <option value="name">ASSIGN</option>
                     </select>
                 </div>
             </div>
@@ -217,20 +216,13 @@ function unassignedProjects() {
             </div>
         </div>
          `
-     
         })
-        
-     assigning()
-          
          
     })
-
-
+        
          singleProject.innerHTML=html
          console.log(singleProject)
          unAssigned.appendChild(singleProject)
-
-      
       })
 
 }
@@ -347,13 +339,13 @@ function users() {
       )
       .then((res)=>{
         const dara=res.data
-        console.log(dara)
+        //console.log(dara)
          const getUsers=document.querySelector('.users')
-        console.log(dara.allusers)
+        console.log(dara.users)
         
         const singleProject= document.createElement('div')
         let html = ''    
-    dara.allusers.forEach(user => {
+    dara.users.forEach(user => {
         html+=`
         <div class="users2">
         <div class="profileImage">
@@ -366,7 +358,7 @@ function users() {
         <div class="assignedOrNot">
             <p>Assigned</p>
         </div>
-        <select name="" id="assign" onclick="assigning()"  class="assign">
+        <select name="" id="" class="assign">
             <option value="">ASSIGN</option>
         </select>    
     </div>
@@ -379,64 +371,5 @@ function users() {
          singleProject.innerHTML=html
          console.log(singleProject)
          getUsers.appendChild(singleProject)
-      })
-}
-
-function assigning(){
-    const assign=document.getElementById('assign')
-    axios 
-    .get(
-        "http://localhost:5000/user/all/users",
-
-
-        {
-          headers: {
-            "Accept": "application/json",
-            "Content-type": "application/json",
-          },
-        }
-      ).then((res)=>{
-        /////
-        const dara=res.data
-        console.log(dara)
-        
-        console.log(dara.allusers)
-        
-        let html=''
-        dara.allusers.forEach((user)=>{
-            
-            html+=`
-            <option value=${user.userId}>${user.userName}</option>
-
-            `
-        })
-    
-    assign.innerHTML=html 
-    assign.addEventListener('change',()=>{
-        
-        axios
-        .put(
-          `http://localhost:5000/user/assign/${assign.value}`,
-  
-          {
-               
-                projectId:`${item.projectId}`,
-                assigned:1,
-             
-          },
-  
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-type": "application/json",
-              "token":localStorage.getItem('token'),
-            },
-          }
-        )
-
-    })
-        
-
-        ////
       })
 }
