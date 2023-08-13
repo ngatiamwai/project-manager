@@ -218,7 +218,7 @@ describe(" Tests For Users Controller", () => {
 
       expect(res.json).toHaveBeenCalledWith({
         message: "Logged in successful",
-        token: "mockedToken",
+        token: "mockedToken"
       });
     }); //////////////
   });

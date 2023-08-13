@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.main{
+    width: 50%;
+    height: 100%;
+    background:rgb(20, 47, 105) ;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.main h1,p{
+    color: white;
+}
+form{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+form input{
+    width: 60%;
+    height: 7%;
+    margin-top: 20px;
+    border: 1px solid rgb(20, 47, 105);
+    border-radius: 10px;
+    outline: none;
+}
+form h1{
+    color: rgb(20, 47, 105);
+}
+form button{
+    width: 30%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 7%;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    border:1px solid rgb(20, 47, 105);
+    background: white;
+
+}
+@media screen and (max-width:600px) {
+    body{
+        flex-direction: column;
+    }
+    .main{
+        width: 100%;
+        height: 50%;
+    }
+    .main h1{
+        font-size: 20px;
+    }
+    form{
+        width: 100%;
+        height: 50%;
+    }
+    form input{
+        width: 80%;
+        border-radius: 5px;
+        height: 10%;
+
+    }
+    form h1{
+        font-size: 20px;
+    }
+    form button{
+        width: 40%;
+        height: 10%;
+        margin: 10px;
+    }
+}
