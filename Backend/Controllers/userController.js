@@ -18,7 +18,7 @@ const registerUser=async(req,res)=>{
         
         const userId=v4()
 
-        const {userName,userPhone,userEmail,userPassword}=req.body
+        const {userName,userPhone,userEmail,userPassword, role}=req.body
 
         const {error}=userRegisterValidator.validate(req.body)
         if(error){
@@ -35,6 +35,7 @@ const registerUser=async(req,res)=>{
             .input('userEmail',userEmail)
             .input('userPhone',userPhone)
             .input('userPassword',hashedPassword)
+            .input('role', role)
             .execute('registerUserProc'))
             console.log(result.rowsAffected);
             if (result.rowsAffected[0] == 1){
@@ -53,7 +54,9 @@ const allusers = async(req,res)=>{
 try {
     const pool=await mssql.connect(sqlConfig)
     const users = (await pool.request().execute('getAllUsersProc')).recordset
-    res.status(200).json({message:"Here is the list of users",users:users})
+
+    res.status(200).json({message:"Here is the list of users",users})
+  
 } catch (error) {
     return res.json({error})
 }
@@ -62,7 +65,7 @@ try {
 //USER LOGIN Controller
 const loginUser=async(req,res)=>{
     try {
-        const {userName,userPassword}=req.body 
+        const {userName,userPassword,role}=req.body 
 
         if(!userName || !userPassword){
             return res.status(400).json({error:"Kindly input your credentials"})
@@ -82,7 +85,7 @@ const loginUser=async(req,res)=>{
         if(comparePassword){
             const {userPassword,role,userId,...payload}=user 
             const token=jwt.sign(payload, process.env.SECRET,{expiresIn:'360000s'})
-            return res.status(200).json({message:'Logged in successful',token:token})
+            return res.status(200).json({message:'Logged in successful',token:token,role})
                 
            }else{
             return res.status(400).json({message:'Invalid Log in'})
@@ -186,7 +189,7 @@ const viewAllAssignedProjects=async(req,res)=>{
         const {assigned}=req.params
         const pool=await mssql.connect(sqlConfig)
         
-        const projectsAssigned=(await pool.request().input('assigned',assigned).execute('viewAllAssignedProjectsProc')).recordset
+        const projectsAssigned=(await pool.request().input('assigned',assigned).execute('viewAllAssignedProjectsProc')).recordsets
 
         return res.json({projects:projectsAssigned})
         

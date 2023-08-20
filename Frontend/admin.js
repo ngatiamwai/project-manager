@@ -12,37 +12,44 @@ const createproject=document.querySelector('.createproject')
 const projectTitle=document.querySelector('.Title')
 const projectDescription=document.querySelector('.Description')
 const endDate=document.querySelector('.Date')
-
-createproject.addEventListener('submit', (e)=>{
-    // e.preventDefault()
-
-    let createdProject=projectTitle.value !=="" && projectDescription.value !=="" && endDate.value !==""
-    if(createdProject){
-        axios 
-        .post(
-            "http://localhost:5000/project",
-    
-            {
-              projectName: projectTitle.value,
-              projectDescription: projectDescription.value,
-              endDate:endDate.value,
+const token = localStorage.token
+createproject.addEventListener('submit', async (e) => {
+    e.preventDefault();
+  
+    const projectName = document.querySelector('.Title');
+    const projectDescription = document.querySelector('.Description');
+    const endDate = document.querySelector('.Date');
+  
+    const createdProject = projectName.value !== "" && projectDescription.value !== "" && endDate.value !== "";
+  
+    if (createdProject) {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/project",
+          {
+            projectName: projectName.value,
+            projectDescription: projectDescription.value,
+            endDate: endDate.value,
+          },
+          {
+            headers: {
+              "Accept": "application/json",
+              "Content-type": "application/json",
+              "token": token
             },
-    
-            {
-              headers: {
-                "Accept": "application/json",
-                "Content-type": "application/json",
-                
-              },
-            }
-          ).then((res)=>{
-            window.location.href=='./createProject.html'
-            console.log(res.data)
-            
-          })
+          }
+        );
+  
+        console.log(response.data);
+        alert('Project created successfully!');
+        window.location.href = './createProject.html'; // Redirect after successful submission
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error creating project. Please check your input and try again.');
+      }
     }
-
-})
+  });
+  
 
 /////
 function assignedProjects() {
@@ -177,8 +184,8 @@ function unassignedProjects() {
                     </p>
                 </div>
                 <div class="actualContentBody3">
-                    <select class="assign" id="assign" >
-                    
+                    <select class="assign" id="">
+                        <option value="name">ASSIGN</option>
                     </select>
                 </div>
             </div>
@@ -217,20 +224,13 @@ function unassignedProjects() {
             </div>
         </div>
          `
-     
         })
-        
-     assigning()
-          
          
     })
-
-
+        
          singleProject.innerHTML=html
          console.log(singleProject)
          unAssigned.appendChild(singleProject)
-
-      
       })
 
 }
@@ -243,9 +243,7 @@ function completedProjects() {
 
     axios 
     .get(
-        "http://localhost:5000/project/completed/projects",
-
-
+        "http://localhost:5000/project/completed/projects ",
         {
           headers: {
             "Accept": "application/json",
@@ -259,8 +257,10 @@ function completedProjects() {
         console.log(dara.completedProjects)
         
         const singleProject= document.createElement('div')
-        let html = ''    
+        let html = '' 
+        console.log(dara);   
     dara.completedProjects.forEach(project => {
+        html=""
         html+=`
             <div class="actualContent">
             <div class="actualContentBody">
@@ -313,17 +313,10 @@ function completedProjects() {
          `
          
     })
-        
-        
-         
          singleProject.innerHTML=html
          console.log(singleProject)
          completed.appendChild(singleProject)
       })
-
-
-
-
 }
 function users() {
     document.getElementById("createProject").style.display = "none";
@@ -347,13 +340,13 @@ function users() {
       )
       .then((res)=>{
         const dara=res.data
-        console.log(dara)
+        //console.log(dara)
          const getUsers=document.querySelector('.users')
-        console.log(dara.allusers)
+        console.log(dara.users)
         
         const singleProject= document.createElement('div')
         let html = ''    
-    dara.allusers.forEach(user => {
+    dara.users.forEach(user => {
         html+=`
         <div class="users2">
         <div class="profileImage">
@@ -366,7 +359,7 @@ function users() {
         <div class="assignedOrNot">
             <p>Assigned</p>
         </div>
-        <select name="" id="assign" onclick="assigning()"  class="assign">
+        <select name="" id="" class="assign">
             <option value="">ASSIGN</option>
         </select>    
     </div>
@@ -379,64 +372,5 @@ function users() {
          singleProject.innerHTML=html
          console.log(singleProject)
          getUsers.appendChild(singleProject)
-      })
-}
-
-function assigning(){
-    const assign=document.getElementById('assign')
-    axios 
-    .get(
-        "http://localhost:5000/user/all/users",
-
-
-        {
-          headers: {
-            "Accept": "application/json",
-            "Content-type": "application/json",
-          },
-        }
-      ).then((res)=>{
-        /////
-        const dara=res.data
-        console.log(dara)
-        
-        console.log(dara.allusers)
-        
-        let html=''
-        dara.allusers.forEach((user)=>{
-            
-            html+=`
-            <option value=${user.userId}>${user.userName}</option>
-
-            `
-        })
-    
-    assign.innerHTML=html 
-    assign.addEventListener('change',()=>{
-        
-        axios
-        .put(
-          `http://localhost:5000/user/assign/${assign.value}`,
-  
-          {
-               
-                projectId:`${item.projectId}`,
-                assigned:1,
-             
-          },
-  
-          {
-            headers: {
-              Accept: "application/json",
-              "Content-type": "application/json",
-              "token":localStorage.getItem('token'),
-            },
-          }
-        )
-
-    })
-        
-
-        ////
       })
 }
