@@ -1,23 +1,23 @@
 ###PROJECT MANAGEMENT
 POST http://localhost:5000/project
 Content-Type: application/json
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxODI1MzYxLCJleHAiOjE2OTIxODUzNjF9.cL0VvXNx7ANpEBfQgK6t1UqzqSks2OS32POGPpEISto
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NjMyNTQzMiIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MjE4NDQ3MiwiZXhwIjoxNjkyNTQ0NDcyfQ.tvT_91eKBw9z7_n5vxD8Cb-9BWlsgy2U3t04PFkroA8
 
 
 {
 
-    "projectName": "Nairobi school",
-    "projectDescription": "run on the runways",
+    "projectName": "Hayawani Dam",
+    "projectDescription": "Build Hayawani Dam",
     "endDate": "2027/04/04"
 }
 ###GET ALL PROJECTS
 GET http://localhost:5000/project
 
 ###GET ONE PROJECT
-GET http://localhost:5000/project/077f9c00-33e3-4e31-8da7-491e8ecf5b1f
+GET http://localhost:5000/project/5074f0bd-517d-45a4-9d81-d56f9fcc4793
 
 ###UPDATE PROJECT
-PUT  http://localhost:5000/project/077f9c00-33e3-4e31-8da7-491e8ecf5b1f
+PUT  http://localhost:5000/project/5074f0bd-517d-45a4-9d81-d56f9fcc4793
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 } 
 ###DELETE PROJECT
 
-DELETE http://localhost:5000/project/077f9c00-33e3-4e31-8da7-491e8ecf5b1f
+DELETE http://localhost:5000/project/5074f0bd-517d-45a4-9d81-d56f9fcc4793
 
 
 ###REGISTER USER
@@ -50,14 +50,14 @@ POST http://localhost:5000/user/login
 Content-Type: application/json 
 
 {
-    "userName":"David Munyiri",
+    "userName":"Ngatia Mwai",
     "userPassword":"12345678"
 }
 
 ###USER DETAIL UPDATE
-PUT http://localhost:5000/user/update/19555f39-2197-4626-ab4d-7367b58ea4b7
+PUT http://localhost:5000/user/update/a49838af-21ce-46b4-9dea-b6612ffa518a
 Content-Type: application/json 
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxODI1MzYxLCJleHAiOjE2OTIxODUzNjF9.cL0VvXNx7ANpEBfQgK6t1UqzqSks2OS32POGPpEISto
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bnlpcmlAZ21haWwuY29tIiwidXNlclBob25lIjoiMDc0MTcxMjEzMSIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MjE4NDM3MSwiZXhwIjoxNjkyNTQ0MzcxfQ.pCkZq7y5PXWRJ9sEElcMgDJ-5rT3YZ3z3sF66SGeSzk
 
 {
     "userName":"David Munyiri",
@@ -67,17 +67,17 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwi
 } 
 
 ###ASSIGN PROJECT
-PUT http://localhost:5000/user/assign/
+PUT http://localhost:5000/user/assign/874cd50d-931d-4727-ad7c-aef38e1fb5b5
 Content-Type: application/json 
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxOTU1NWYzOS0yMTk3LTQ2MjYtYWI0ZC03MzY3YjU4ZWE0YjciLCJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDE3MTIxMzEiLCJwcm9maWxlUGljIjpudWxsLCJpYXQiOjE2OTE0Mjc0MjAsImV4cCI6MTY5MTc4NzQyMH0.R380B5whU7rmjiSUisvwIj0AGnNNthz1Shkhl3f9-rw
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NjMyNTQzMiIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MjE4NDc3NSwiZXhwIjoxNjkyNTQ0Nzc1fQ.RyDJ-4M6e6--GBTXTsmIVOtLxiQIQ_MaP3b64U546KQ
    
 {   
-    "projectId":"e7845a65-24af-461c-bee3-374dab0eec6c",
+    "projectId":"dc51552f-5b36-4e8e-afdf-72b6256f9d4c",
     "assigned":1
 } 
 
 ###USER TO VIEW ASSIGNED PROJECT 
-GET http://localhost:5000/user/ed2e6eba-8bdf-4e4f-8ac6-03dfa5ca4bd5
+GET http://localhost:5000/user/874cd50d-931d-4727-ad7c-aef38e1fb5b5
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3MDk3ODU0NjYxIiwicHJvZmlsZVBpYyI6bnVsbCwiaWF0IjoxNjkxNDkxMzM3LCJleHAiOjE2OTE4NTEzMzd9.7kZOJglMMifofjjR7kTkXyxpZz2caFHS2VlZhII_Pjg
 
 
@@ -86,7 +86,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwi
 ###ADMIN VIEW ALL PROJECTS HE HAS ASSIGNED 
 GET http://localhost:5000/user/view/0
 Content-Type: application/json 
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGU0OTY1NC1hMTE2LTRkNWItYTQ4NC03NTNiMDMwOGE3MGUiLCJ1c2VyTmFtZSI6IkJsZXNzaW5ncyIsInVzZXJFbWFpbCI6ImNsYXJhQGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NDA0NjU0NTYxMiIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOm51bGwsImlhdCI6MTY5MTMzMzM0NiwiZXhwIjoxNjkxNjkzMzQ2fQ.iHqVLhqTz5oskGr3SxdTz2hghmRTzPSdZ3V0MK9UBTo
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NjMyNTQzMiIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MjE4NDc3NSwiZXhwIjoxNjkyNTQ0Nzc1fQ.RyDJ-4M6e6--GBTXTsmIVOtLxiQIQ_MaP3b64U546KQ
 
 
 
@@ -94,25 +94,32 @@ token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZGU0OTY1NC1hMTE2LTRkN
 ###Unassigned projects
 GET http://localhost:5000/project/unasigned/projects
 Content-Type: application/json 
-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiNTk0NTkwNSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDA2NjQ4LCJleHAiOjE2OTE3NjY2NDh9.6b1JjKV58XVGNYAXhmwD4if-vpYj8i9tVohbIT7_YRM
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkRhdmlkIE11bnlpcmkiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3NjMyNTQzMiIsInByb2ZpbGVQaWMiOm51bGwsImlhdCI6MTY5MjE4NDc3NSwiZXhwIjoxNjkyNTQ0Nzc1fQ.RyDJ-4M6e6--GBTXTsmIVOtLxiQIQ_MaP3b64U546KQ
 
 {
-    
+    "assigned":0
 }
 
 ###COMPLETE A PROJECT
-PUT http://localhost:5000/user/complete/ed2e6eba-8bdf-4e4f-8ac6-03dfa5ca4bd5
+PUT http://localhost:5000/user/complete/874cd50d-931d-4727-ad7c-aef38e1fb5b5
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJkYXZpZG11bXlpcmkyMDE5QG91dGxvb2suY29tIiwidXNlclBob25lIjoiNTk0NTkwNSIsInByb2ZpbGVQaWMiOm51bGwsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkxNDA2NjQ4LCJleHAiOjE2OTE3NjY2NDh9.6b1JjKV58XVGNYAXhmwD4if-vpYj8i9tVohbIT7_YRM
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3OTM2OTMyMjQiLCJwcm9maWxlUGljIjpudWxsLCJpYXQiOjE2OTIxODUzNDAsImV4cCI6MTY5MjU0NTM0MH0.z_yrRNS6s8BFrlc8mNbn_MiI9a9Kb6l0wA0nRIRLta4
 
 {
-    "projectId": "381246da-c1a1-4d98-8b11-b9ae45127bea"
+    "projectId": "dc51552f-5b36-4e8e-afdf-72b6256f9d4c"
 }
 
 ###VIEW ALL COMPLETED PROJECTS
 GET http://localhost:5000/project/completed/projects 
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3OTM2OTMyMjQiLCJwcm9maWxlUGljIjpudWxsLCJpYXQiOjE2OTIxODUzNDAsImV4cCI6MTY5MjU0NTM0MH0.z_yrRNS6s8BFrlc8mNbn_MiI9a9Kb6l0wA0nRIRLta4
+
+{
+    "status": 1
+}
+
 
 ###READ TOKEN
 GET http://localhost:5000/user/check/token
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjZTE5NzQxYy03NThhLTRiMTUtYjZjYi1kNWQ0MmUxNGIyY2MiLCJ1c2VyTmFtZSI6Implc2UgZmFpdGgiLCJ1c2VyRW1haWwiOiJzZWxlc3RlcmF0QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjU5NDU5MDUiLCJwcm9maWxlUGljIjpudWxsLCJyb2xlIjoidXNlciIsImlhdCI6MTY5MTQxMjg3NywiZXhwIjoxNjkxNzcyODc3fQ.5JDy_59rqIUPkjm2xf4X7QsVR4a_PPPbICnvnDWriGA
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Ik5nYXRpYSBNd2FpIiwidXNlckVtYWlsIjoibmdhdGlhbXdhaTI1QGdtYWlsLmNvbSIsInVzZXJQaG9uZSI6IjA3OTM2OTMyMjQiLCJwcm9maWxlUGljIjpudWxsLCJpYXQiOjE2OTIxODUzNDAsImV4cCI6MTY5MjU0NTM0MH0.z_yrRNS6s8BFrlc8mNbn_MiI9a9Kb6l0wA0nRIRLta4
 

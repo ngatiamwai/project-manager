@@ -18,7 +18,7 @@ const registerUser=async(req,res)=>{
         
         const userId=v4()
 
-        const {userName,userPhone,userEmail,userPassword}=req.body
+        const {userName,userPhone,userEmail,userPassword, role}=req.body
 
         const {error}=userRegisterValidator.validate(req.body)
         if(error){
@@ -35,6 +35,7 @@ const registerUser=async(req,res)=>{
             .input('userEmail',userEmail)
             .input('userPhone',userPhone)
             .input('userPassword',hashedPassword)
+            .input('role', role)
             .execute('registerUserProc'))
             console.log(result.rowsAffected);
             if (result.rowsAffected[0] == 1){
